@@ -1,5 +1,5 @@
-import HomePage from "../Components/HomePage";
-import MainBar from "../Components/MainBar";
+import HomePage from "./Components/HomePage";
+import MainBar from "./Components/MainBar";
 
 export default function Root() {
   return (
