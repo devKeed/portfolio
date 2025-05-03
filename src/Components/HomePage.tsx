@@ -32,24 +32,24 @@ function HomePage() {
       fontWeightBold: 700,
       h1: {
         fontSize: "3.1rem",
-        fontWeight: "bold",
+        fontWeight: "8000",
         lineHeight: "1.2em",
-        fontFamily: "Bricolage Grotesque, sans-serif;",
+        fontFamily: "PPMori-Bold, sans-serif;",
       },
       h2: {
         fontSize: "2.6rem",
-        fontWeight: "bold",
+        fontWeight: "8000",
         lineHeight: "1.2em",
-        fontFamily: "Bricolage Grotesque, sans-serif;",
+        fontFamily: "PPMori-Bold, sans-serif;",
       },
       h3: {
         fontSize: "1.5rem",
-        fontWeight: "bold",
+        fontWeight: "8000",
         lineHeight: "1.2em",
-        fontFamily: "Bricolage Grotesque, sans-serif;",
+        fontFamily: "PPMori-Bold, sans-serif;",
       },
       h5: {
-        fontFamily: "Bricolage Grotesque, sans-serif;",
+        fontFamily: "PPMori-Bold, sans-serif;",
       },
       button: {
         textTransform: "none",

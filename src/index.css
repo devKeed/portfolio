@@ -22,6 +22,27 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "PPMori-Light";
+  src: url("/fonts/PPMori-Extralight.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PPMori-Regular";
+  src: url("/fonts/PPMori-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PPMori-Bold";
+  src: url("/fonts/PPMori-SemiBold.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   opacity: 1;
   background-image: linear-gradient(#eeefff 1px, transparent 1px),
