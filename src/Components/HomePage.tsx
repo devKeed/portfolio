@@ -1,6 +1,3 @@
-import { ThemeProvider } from "@emotion/react";
-import { createTheme } from "@mui/material";
-
 import MainBar from "./MainBar";
 import Hero from "./Hero";
 import { Footer } from "./Footer";
@@ -11,78 +8,34 @@ import Skills from "./Skills";
 import Contact from "./Contact";
 import Highlight from "./Highlights";
 import Designs from "./Designs";
+import { useTheme } from "@mui/material";
 
 function HomePage() {
-  const THEME = createTheme({
-    palette: {
-      primary: {
-        main: "#8fff86",
-      },
-      secondary: {
-        main: "#784ef4",
-      },
-      background: {},
-    },
-    typography: {
-      fontFamily: "NeueRegular, sans-serif;",
-      fontSize: 14,
-      fontWeightLight: 200,
-      fontWeightRegular: 400,
-      fontWeightMedium: 500,
-      fontWeightBold: 700,
-      h1: {
-        fontSize: "3.1rem",
-        fontWeight: "8000",
-        lineHeight: "1.2em",
-        fontFamily: "PPMori-Bold, sans-serif;",
-      },
-      h2: {
-        fontSize: "2.6rem",
-        fontWeight: "8000",
-        lineHeight: "1.2em",
-        fontFamily: "PPMori-Bold, sans-serif;",
-      },
-      h3: {
-        fontSize: "1.5rem",
-        fontWeight: "8000",
-        lineHeight: "1.2em",
-        fontFamily: "PPMori-Bold, sans-serif;",
-      },
-      h5: {
-        fontFamily: "PPMori-Bold, sans-serif;",
-      },
-      button: {
-        textTransform: "none",
-        fontSize: 14,
-        "&:hover": {
-          color: "#fff !important",
-        },
-      },
-    },
-  });
+  // Get the theme from the context (which includes light/dark mode)
+  const theme = useTheme();
 
   return (
     <>
-      <ThemeProvider theme={THEME}>
-        <MainBar />
-        <div
-          style={{
-            margin: "auto",
-            maxWidth: "1100px",
-            overflow: "hidden",
-          }}
-        >
-          <Hero />
-          <Music />
-          <Service />
-          <Skills />
-          <Highlight />
-          <Designs/>
-          {/* <Projects /> */}
-          <Contact />
-        </div>
-        <Footer />
-      </ThemeProvider>
+      <MainBar />
+      <div
+        style={{
+          margin: "auto",
+          maxWidth: "1100px",
+          overflow: "hidden",
+          // backgroundColor: theme.palette.background.default,
+          color: theme.palette.text.primary,
+        }}
+      >
+        <Hero />
+        <Music />
+        <Service />
+        <Skills />
+        <Highlight />
+        <Designs/>
+        {/* <Projects /> */}
+        <Contact />
+      </div>
+      <Footer />
     </>
   );
 }

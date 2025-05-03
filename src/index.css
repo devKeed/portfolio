@@ -1,10 +1,43 @@
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap");
 
+:root {
+  /* Light mode variables */
+  --background-color: #fff;
+  --background-grid-color: #eeefff;
+  --text-color: #000;
+  --border-color: #000;
+  --hover-color: #8fff86;
+  --button-bg: #fff;
+  --button-hover-bg: #3b71ff;
+  --button-hover-color: #fff;
+  --box-shadow-color: #000;
+  
+  /* Global typography variables */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[data-theme='dark'] {
+  /* Dark mode variables */
+  --background-color: #121212;
+  --background-grid-color: #333;
+  --text-color: #fff;
+  --border-color: #fff;
+  --hover-color: #8fff86;
+  --button-bg: #333;
+  --button-hover-bg: #3b71ff;
+  --button-hover-color: #fff;
+  --box-shadow-color: #fff;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  color: var(--text-color);
   /* scrollbar-color: color-mix(in oklch, currentColor 35%, transparent) transparent; */
 }
 
@@ -45,10 +78,13 @@
 
 body {
   opacity: 1;
-  background-image: linear-gradient(#eeefff 1px, transparent 1px),
-    linear-gradient(to right, #eeefff 1px, #fff 1px);
+  background-color: var(--background-color);
+  background-image: linear-gradient(var(--background-grid-color) 1px, transparent 1px),
+    linear-gradient(to right, var(--background-grid-color) 1px, var(--background-color) 1px);
   background-size: 20px 20px;
   background-position: fixed;
+  color: var(--text-color);
+  transition: all 0.3s ease;
 }
 
 *::-webkit-scrollbar {
@@ -61,21 +97,15 @@ body {
   scrollbar-width: none; /* Firefox */
 }
 
-:root {
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 a {
   text-decoration: none;
-  color: #000;
+  color: var(--text-color);
+  transition: color 0.3s ease;
 }
 
 a:hover {
   cursor: pointer;
-  color: #8fff86;
+  color: var(--hover-color);
 }
 
 .flexCenter {
@@ -116,8 +146,8 @@ a:hover {
 }
 
 .dropBox {
-  border: 1px solid #000;
-  box-shadow: 2px 2px #000;
+  border: 1px solid var(--border-color);
+  box-shadow: 2px 2px var(--border-color);
   border-radius: 10px;
 }
 
@@ -131,10 +161,10 @@ a:hover {
 }
 
 .portfolio-button {
-  background-color: #fff;
-  border: 2px solid #000;
-  box-shadow: #000 3px 3px 0 0;
-  color: #000;
+  background-color: var(--button-bg);
+  border: 2px solid var(--border-color);
+  box-shadow: var(--box-shadow-color) 3px 3px 0 0;
+  color: var(--text-color);
   cursor: pointer;
   display: inline-block;
   font-weight: 600;
@@ -151,14 +181,14 @@ a:hover {
 }
 
 .portfolio-button:hover {
-  background-color: #3b71ff;
-  color: #fff;
-  box-shadow: #000 2px 2px 0 0;
+  background-color: var(--button-hover-bg);
+  color: var(--button-hover-color);
+  box-shadow: var(--box-shadow-color) 2px 2px 0 0;
   transform: translate(2px, 2px);
 }
 
 .portfolio-button:active {
-  box-shadow: #000 0px 0px 0 0;
+  box-shadow: var(--box-shadow-color) 0px 0px 0 0;
   transform: translate(2px, 2px);
 }
 
@@ -187,8 +217,8 @@ a:hover {
 
 .footer {
   height: 4rem;
-  background-image: linear-gradient(to right, #000 1px, transparent 1px),
-    linear-gradient(to bottom, #000 1px, transparent 1px);
+  background-image: linear-gradient(to right, var(--border-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
   background-size: 2rem 2rem;
   background-position: center center;
 }

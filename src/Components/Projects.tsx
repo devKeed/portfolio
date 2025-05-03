@@ -1,7 +1,7 @@
 import { Hidden, Stack, Typography } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LaunchIcon from "@mui/icons-material/Launch";
-import { projectItems } from "./MapItems";
+import { projectItems } from "../data/MapItems";
 
 const Projects = () => {
   return (

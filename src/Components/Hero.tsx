@@ -50,7 +50,11 @@ const Hero = () => {
             component={motion.div}
             variants={textVariants}
           >
-            <Typography variant="h1"  fontSize={{ xs: "2rem", sm: "2.5rem", lg: "3.1rem" }}>
+            <Typography 
+              variant="h1"  
+              fontSize={{ xs: "2rem", sm: "2.5rem", lg: "3.1rem" }}
+              sx={{ color: theme.palette.text.primary }}
+            >
               <Typewriter
                 words={["Hey! I'm Fortune, Fullstack Software Engineer"]}
                 loop={1}
@@ -67,6 +71,7 @@ const Hero = () => {
               mt={2}
               component={motion.p}
               variants={textVariants}
+              sx={{ color: theme.palette.text.secondary }}
             >
               In my world, it's about merging technical expertise with aesthetics,
               ensuring every interaction is smooth and meaningful.
@@ -81,7 +86,12 @@ const Hero = () => {
             <img
               className="float"
               height="100%"
-              style={{ marginLeft: "auto", borderRadius:"50%", borderRight: "5px solid #000", borderBottom: "8px solid #000" }}
+              style={{ 
+                marginLeft: "auto", 
+                borderRadius:"50%", 
+                borderRight: `5px solid ${theme.palette.mode === 'dark' ? '#fff' : '#000'}`, 
+                borderBottom: `8px solid ${theme.palette.mode === 'dark' ? '#fff' : '#000'}`
+              }}
               src="./images/fortune_image.webp"
               alt="Fortune's Image"
             />
@@ -103,7 +113,13 @@ const Hero = () => {
             component={motion.div}
             variants={textVariants}
           >
-            <Typography variant="h2" textAlign="center" pb={4}  fontSize={{ xs: "2rem", sm: "2.5rem", lg: "3.1rem" }}>
+            <Typography 
+              variant="h2" 
+              textAlign="center" 
+              pb={4}  
+              fontSize={{ xs: "2rem", sm: "2.5rem", lg: "3.1rem" }}
+              sx={{ color: theme.palette.text.primary }}
+            >
               <Typewriter
                 words={["Hey! I'm Fortune, Fullstack Software Engineer"]}
                 loop={1}
@@ -122,6 +138,11 @@ const Hero = () => {
                 height={200}
                 className="float"
                 src="./images/fortune_image.webp"
+                style={{
+                  borderRadius:"50%", 
+                  borderRight: `5px solid ${theme.palette.mode === 'dark' ? '#fff' : '#000'}`, 
+                  borderBottom: `8px solid ${theme.palette.mode === 'dark' ? '#fff' : '#000'}`
+                }}
                 alt="Fortune's Image"
               />
             </motion.div>
@@ -132,6 +153,7 @@ const Hero = () => {
               mt={2}
               component={motion.p}
               variants={textVariants}
+              sx={{ color: theme.palette.text.secondary }}
             >
               In my world, it's about merging technical expertise with aesthetics,
               ensuring every interaction is smooth and meaningful.

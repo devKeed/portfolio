@@ -2,7 +2,7 @@ import { Button, Stack, Typography, useMediaQuery, useTheme } from "@mui/materia
 import { motion } from "framer-motion";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from "react";
-import { projectItems } from "./MapItems";
+import { projectItems } from "../data/MapItems";
 
 const styles = {
   flexBetween: {

@@ -2,7 +2,7 @@ import { Stack, Typography, IconButton } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useRef } from "react";
-import { pages } from "./MapItems";
+import { pages } from "../data/MapItems";
 
 const Designs = () => {
   const scrollRef: any = useRef(null);

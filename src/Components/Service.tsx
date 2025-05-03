@@ -1,7 +1,10 @@
-import { Grid, Stack, Typography } from "@mui/material";
-import { serviceItems } from "./MapItems";
+import { Grid, Stack, Typography, useTheme } from "@mui/material";
+import { serviceItems } from "../data/MapItems";
 
 const Service = () => {
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === 'dark';
+  
   return (
     <Stack className="topSpace innerWidth flexCenter">
       <Typography
@@ -19,8 +22,13 @@ const Service = () => {
                 spacing={2}
                 className="flexStart dropBox pop-up"
                 height={{ xs: 300, sm: 280, md: 300 }}
-                sx={{background:"#fff",
-                  "&:hover": { background: "#8fff86" },
+                sx={{
+                  background: isDarkMode ? "#2a2a2a" : "#fff",
+                  color: isDarkMode ? "#fff" : "inherit",
+                  "&:hover": { 
+                    background: "#8fff86",
+                    color: isDarkMode ? "#000" : "inherit" 
+                  },
                 }}
               >
                 {service.icon}
