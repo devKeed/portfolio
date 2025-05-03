@@ -14,6 +14,7 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ColorModeContext } from "./ColorMode";
+import { Link } from "react-router-dom";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -103,7 +104,7 @@ const MainBar = () => {
   const menuItems = [
     { label: "Home", href: "/" },
     { label: "My projects", href: "#projects" },
-    // { label: "Blog", href: "" },
+    { label: "Blog", href: "/blog" },
     { label: "Contact me", href: "#contact" },
   ];
 
@@ -112,7 +113,6 @@ const MainBar = () => {
       style={{
         borderBottom: "1.5px solid",
         borderColor: theme.palette.mode === "dark" ? "#fff" : "#000",
-        // backgroundColor: theme.palette.background.default,
         color: theme.palette.text.primary,
       }}
     >
@@ -124,8 +124,7 @@ const MainBar = () => {
           spacing={2}
           className="flexBetween innerWidth"
         >
-          <a href="/">
-            {/* <img src="images\fortune_logo.webp" height={30} alt="" /> */}
+          <Link to="/" style={{ textDecoration: 'none' }}>
             <Typography
               variant="body1"
               textAlign="center"
@@ -137,16 +136,24 @@ const MainBar = () => {
               Fortune{" "}
               <span style={{ color: theme.palette.primary.main }}>Dev</span>
             </Typography>
-          </a>
+          </Link>
           <Stack direction="row" spacing={4} alignItems="center">
-            {menuItems.map(
-              (item, index) =>
-                item.href && (
-                  <a key={index} href={item.href}>
+            {menuItems.map((item, index) => {
+              // Use standard anchor tag for hash links (section navigation)
+              if (item.href.startsWith('#')) {
+                return (
+                  <a key={index} href={item.href} style={{ textDecoration: 'none', color: 'inherit' }}>
                     <Typography fontWeight="bold">{item.label}</Typography>
                   </a>
-                )
-            )}
+                );
+              }
+              // Use React Router's Link for page navigation
+              return (
+                <Link key={index} to={item.href} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <Typography fontWeight="bold">{item.label}</Typography>
+                </Link>
+              );
+            })}
             <Stack direction="row" alignItems="center" spacing={1}>
               <IconButton
                 sx={{ ml: 1 }}
@@ -181,9 +188,9 @@ const MainBar = () => {
               zIndex: 100,
             }}
           >
-            <a href="/">
+            <Link to="/" style={{ textDecoration: 'none' }}>
               <img src="images\fortune_logo.webp" height={30} alt="" />
-            </a>
+            </Link>
             <Stack direction="row" alignItems="center">
               <MaterialUISwitch
                 checked={theme.palette.mode === "dark"}
@@ -231,53 +238,54 @@ const MainBar = () => {
                     width: "100%",
                   }}
                 >
-                  {menuItems.map(
-                    (item, index) =>
-                      item.href && (
-                        <motion.div
-                          key={index}
-                          variants={menuItemVariants}
-                          onClick={() => setOpenMenu(false)}
-                        >
-                          <a
-                            href={item.href}
-                            style={{
-                              display: "block",
-                              textAlign: "center",
-                              padding: "10px 0",
-                              color: theme.palette.text.primary,
-                            }}
-                          >
-                            <Typography
-                              fontWeight="bold"
-                              variant="h5"
-                              sx={{
-                                position: "relative",
-                                "&::after": {
-                                  content: '""',
-                                  position: "absolute",
-                                  width: "0%",
-                                  height: "2px",
-                                  bottom: "-5px",
-                                  left: "50%",
-                                  backgroundColor:
-                                    theme.palette.mode === "dark"
-                                      ? "#fff"
-                                      : "#000",
-                                  transition: "all 0.3s ease",
-                                  transform: "translateX(-50%)",
-                                },
-                                "&:hover::after": {
-                                  width: "40%",
-                                },
-                              }}
-                            >
-                              {item.label}
-                            </Typography>
-                          </a>
-                        </motion.div>
-                      )
-                  )}
+                  {menuItems.map((item, index) => {
+                    const linkProps = {
+                      style: {
+                        display: "block",
+                        textAlign: "center" as const,
+                        padding: "10px 0",
+                        color: theme.palette.text.primary,
+                        textDecoration: 'none'
+                      },
+                      onClick: () => setOpenMenu(false)
+                    };
+                    
+                    const content = (
+                      <Typography
+                        fontWeight="bold"
+                        variant="h5"
+                        sx={{
+                          position: "relative",
+                          "&::after": {
+                            content: '""',
+                            position: "absolute",
+                            width: "0%",
+                            height: "2px",
+                            bottom: "-5px",
+                            left: "50%",
+                            backgroundColor: theme.palette.mode === "dark" ? "#fff" : "#000",
+                            transition: "all 0.3s ease",
+                            transform: "translateX(-50%)",
+                          },
+                          "&:hover::after": {
+                            width: "40%",
+                          },
+                        }}
+                      >
+                        {item.label}
+                      </Typography>
+                    );
+                    
+                    return (
+                      <motion.div key={index} variants={menuItemVariants}>
+                        {item.href.startsWith('#') ? (
+                          <a href={item.href} {...linkProps}>{content}</a>
+                        ) : (
+                          <Link to={item.href} {...linkProps}>{content}</Link>
+                        )}
+                      </motion.div>
+                    );
+                  })}
                 </Stack>
               </motion.div>
             )}

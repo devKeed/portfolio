@@ -1,6 +1,11 @@
 import * as React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { Routes, Route } from "react-router-dom";
 import HomePage from "./HomePage";
+import Blog from "./Blog";
+import MainBar from "./MainBar";
+import { Footer } from "./Footer";
+import { useTheme } from "@mui/material";
 
 // Define the context type
 type ColorModeContextType = {
@@ -88,7 +93,20 @@ export default function ToggleColorMode() {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        <HomePage />
+        <div style={{
+          margin: "auto",
+          overflow: "hidden",
+          color: theme.palette.text.primary,
+        }}>
+          <MainBar />
+          <div style={{ margin: "auto", maxWidth: "1100px" }}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/blog/*" element={<Blog />} />
+            </Routes>
+          </div>
+          <Footer />
+        </div>
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
