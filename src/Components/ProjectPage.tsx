@@ -1,6 +1,5 @@
 import {
   Typography,
-  Grid,
   Card,
   CardContent,
   CardMedia,
@@ -12,6 +11,7 @@ import {
   Tabs,
   Tab,
 } from "@mui/material";
+import Grid from "@mui/material/GridLegacy";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { projectItems } from "../data/MapItems";
@@ -186,81 +186,83 @@ const ProjectPage = () => {
             </Tabs>
           </Box>
 
-          <Grid container spacing={3} component={motion.div} variants={itemVariants}>
-            {filteredProjects.map((project) => (
-              <Grid xs={12} sm={6} md={4} key={project.id}>
-                <Card
-                  className="dropBox"
-                  sx={{
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    backgroundColor: isDarkMode ? '#2a2a2a' : '#fff',
-                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-5px)',
-                      boxShadow: '0 10px 20px rgba(0,0,0,0.1)',
-                    },
-                    cursor: 'pointer'
-                  }}
-                  onClick={() => handleProjectClick(project)}
-                >
-                  <CardMedia
-                    component="img"
-                    height="180"
-                    image={project.image}
-                    alt={project.name}
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography variant="h5" gutterBottom>
-                      {project.name}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                      {project.description.slice(0, 120)}...
-                    </Typography>
-                    
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mb: 2 }}>
-                      {project.tech.slice(0, 3).map((tech, index) => (
-                        <Chip
-                          key={index}
-                          label={tech}
-                          size="small"
-                          sx={{
-                            backgroundColor: isDarkMode ? '#333' : '#f0f0f0',
-                            color: isDarkMode ? '#fff' : 'inherit',
-                            marginRight: '4px',
-                            marginBottom: '4px'
-                          }}
-                        />
-                      ))}
-                      {project.tech.length > 3 && (
-                        <Typography variant="caption" sx={{ alignSelf: 'center' }}>
-                          +{project.tech.length - 3} more
+          <motion.div variants={itemVariants}>
+            <Grid container spacing={3}>
+              {filteredProjects.map((project) => (
+                <Grid item xs={12} sm={6} md={4} key={project.id}>
+                  <Card
+                    className="dropBox"
+                    sx={{
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      backgroundColor: isDarkMode ? '#2a2a2a' : '#fff',
+                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                      '&:hover': {
+                        transform: 'translateY(-5px)',
+                        boxShadow: '0 10px 20px rgba(0,0,0,0.1)',
+                      },
+                      cursor: 'pointer'
+                    }}
+                    onClick={() => handleProjectClick(project)}
+                  >
+                    <CardMedia
+                      component="img"
+                      height="180"
+                      image={project.image}
+                      alt={project.name}
+                    />
+                    <CardContent sx={{ flexGrow: 1 }}>
+                      <Typography variant="h5" gutterBottom>
+                        {project.name}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                        {project.description.slice(0, 120)}...
+                      </Typography>
+                      
+                      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mb: 2 }}>
+                        {project.tech.slice(0, 3).map((tech, index) => (
+                          <Chip
+                            key={index}
+                            label={tech}
+                            size="small"
+                            sx={{
+                              backgroundColor: isDarkMode ? '#333' : '#f0f0f0',
+                              color: isDarkMode ? '#fff' : 'inherit',
+                              marginRight: '4px',
+                              marginBottom: '4px'
+                            }}
+                          />
+                        ))}
+                        {project.tech.length > 3 && (
+                          <Typography variant="caption" sx={{ alignSelf: 'center' }}>
+                            +{project.tech.length - 3} more
+                          </Typography>
+                        )}
+                      </Box>
+
+                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <Typography variant="caption" color="text.secondary">
+                          {project.role}
                         </Typography>
-                      )}
-                    </Box>
+                        <Typography variant="caption" color="text.secondary">
+                          {project.year}
+                        </Typography>
+                      </Box>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
 
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <Typography variant="caption" color="text.secondary">
-                        {project.role}
-                      </Typography>
-                      <Typography variant="caption" color="text.secondary">
-                        {project.year}
-                      </Typography>
-                    </Box>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-
-            {filteredProjects.length === 0 && (
-              <Box sx={{ textAlign: 'center', py: 4, width: '100%' }}>
-                <Typography variant="h6">
-                  No projects found in this category
-                </Typography>
-              </Box>
-            )}
-          </Grid>
+              {filteredProjects.length === 0 && (
+                <Box sx={{ textAlign: 'center', py: 4, width: '100%' }}>
+                  <Typography variant="h6">
+                    No projects found in this category
+                  </Typography>
+                </Box>
+              )}
+            </Grid>
+          </motion.div>
 
           {selectedProject && (
             <Box
@@ -279,7 +281,7 @@ const ProjectPage = () => {
                 }}
               >
                 <Grid container spacing={4}>
-                  <Grid xs={12} md={6}>
+                  <Grid item xs={12} md={6}>
                     <motion.div variants={itemVariants}>
                       <Box
                         sx={{
@@ -317,7 +319,7 @@ const ProjectPage = () => {
                     </motion.div>
                   </Grid>
 
-                  <Grid xs={12} md={6}>
+                  <Grid item xs={12} md={6}>
                     <motion.div variants={itemVariants}>
                       <Typography variant="h3" gutterBottom>
                         {selectedProject.name}

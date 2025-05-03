@@ -1,4 +1,5 @@
-import { Box, Grid, Stack, Typography, useTheme } from "@mui/material";
+import Grid from '@mui/material/GridLegacy';
+import { Box, Stack, Typography, useTheme } from "@mui/material";
 import { skillItems } from "../data/skillsData";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
@@ -132,7 +133,6 @@ const Skills = () => {
             {skillItems.map((skill, id) => {
               return (
                 <Grid
-                  component="div"
                   item
                   xs={6}
                   sm={4}

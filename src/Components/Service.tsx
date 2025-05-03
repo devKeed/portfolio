@@ -1,4 +1,5 @@
-import { Grid, Stack, Typography, useTheme } from "@mui/material";
+import Grid from '@mui/material/GridLegacy';
+import { Stack, Typography, useTheme } from "@mui/material";
 import { serviceItems } from "../data/MapItems";
 
 const Service = () => {
@@ -16,7 +17,7 @@ const Service = () => {
       <Grid container mt={1} spacing={4} className="flexCenter">
         {serviceItems.map((service, id) => {
           return (
-            <Grid xs={12} sm={6} md={4} key={id}>
+            <Grid item xs={12} sm={6} md={4} key={id}>
               <Stack
                 padding={2}
                 spacing={2}

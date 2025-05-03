@@ -1,8 +1,8 @@
+import Grid from '@mui/material/GridLegacy';
 import { 
   Stack, 
   Typography, 
   IconButton, 
-  Grid, 
   TextField, 
   Button, 
   Paper, 
@@ -223,7 +223,7 @@ const ContactPage = () => {
           
           <Grid container spacing={4}>
             {/* Contact Form Section */}
-            <Grid xs={12} md={7}>
+            <Grid item xs={12} md={7}>
               <motion.div variants={itemVariants}>
                 <Paper 
                   elevation={0} 
@@ -240,7 +240,7 @@ const ContactPage = () => {
                   
                   <form onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
-                      <Grid xs={12} sm={6}>
+                      <Grid item xs={12} sm={6}>
                         <TextField
                           label="Your Name"
                           name="name"
@@ -253,7 +253,7 @@ const ContactPage = () => {
                           sx={{ mb: 2 }}
                         />
                       </Grid>
-                      <Grid xs={12} sm={6}>
+                      <Grid item xs={12} sm={6}>
                         <TextField
                           label="Your Email"
                           name="email"
@@ -267,7 +267,7 @@ const ContactPage = () => {
                           sx={{ mb: 2 }}
                         />
                       </Grid>
-                      <Grid xs={12}>
+                      <Grid item xs={12}>
                         <TextField
                           label="Subject"
                           name="subject"
@@ -277,7 +277,7 @@ const ContactPage = () => {
                           sx={{ mb: 2 }}
                         />
                       </Grid>
-                      <Grid xs={12}>
+                      <Grid item xs={12}>
                         <TextField
                           label="Your Message"
                           name="message"
@@ -292,7 +292,7 @@ const ContactPage = () => {
                           sx={{ mb: 3 }}
                         />
                       </Grid>
-                      <Grid xs={12}>
+                      <Grid item xs={12}>
                         <Button 
                           type="submit" 
                           variant="contained" 
@@ -310,7 +310,7 @@ const ContactPage = () => {
             </Grid>
             
             {/* Contact Info Section */}
-            <Grid xs={12} md={5}>
+            <Grid item xs={12} md={5}>
               <motion.div variants={itemVariants}>
                 <Paper 
                   elevation={0}
