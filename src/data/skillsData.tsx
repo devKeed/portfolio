@@ -1,5 +1,15 @@
 export const skillItems = [
   {
+    name: "Flutter",
+    icon: "https://simpleicons.org/icons/flutter.svg",
+    color: "#02569B",
+  },
+  {
+    name: "Typescript",
+    icon: "https://simpleicons.org/icons/typescript.svg",
+    color: "#3178C6",
+  },
+  {
     name: "CSS 3",
     icon: "https://simpleicons.org/icons/css3.svg",
     color: "#1572B6",
@@ -30,6 +40,11 @@ export const skillItems = [
     color: "#47A248",
   },
   {
+    name: "PostgreSQL",
+    icon: "https://simpleicons.org/icons/postgresql.svg",
+    color: "#4169E1",
+  },
+  {
     name: "Express",
     icon: "https://simpleicons.org/icons/express.svg",
     color: "#999999",
@@ -44,7 +59,7 @@ export const skillItems = [
     icon: "https://simpleicons.org/icons/mysql.svg",
     color: "#4479A1",
   },
- 
+
   {
     name: "Git",
     icon: "https://simpleicons.org/icons/git.svg",
@@ -65,17 +80,13 @@ export const skillItems = [
     icon: "https://simpleicons.org/icons/docker.svg",
     color: "#2496ED",
   },
-  {
-    name: "Next js",
-    icon: "https://simpleicons.org/icons/nextdotjs.svg",
-    color: "#999999",
-  },
+
   {
     name: "Linux",
     icon: "https://simpleicons.org/icons/linux.svg",
     color: "#FCC624",
   },
- 
+
   {
     name: "React Native",
     icon: "https://simpleicons.org/icons/react.svg",
@@ -87,18 +98,8 @@ export const skillItems = [
     color: "#00ADD8",
   },
   {
-    name: "PostgreSQL",
-    icon: "https://simpleicons.org/icons/postgresql.svg",
-    color: "#4169E1",
-  },
-  {
-    name: "Flutter",
-    icon: "https://simpleicons.org/icons/flutter.svg",
-    color: "#02569B",
-  },
-  {
-    name: "Typescript",
-    icon: "https://simpleicons.org/icons/typescript.svg",
-    color: "#3178C6",
+    name: "Next js",
+    icon: "https://simpleicons.org/icons/nextdotjs.svg",
+    color: "#999999",
   },
 ];

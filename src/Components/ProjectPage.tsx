@@ -1,21 +1,16 @@
 import {
-  Stack,
   Typography,
   Grid,
   Card,
   CardContent,
   CardMedia,
-  CardActions,
   Button,
   Chip,
   Box,
   useTheme,
   Paper,
-  IconButton,
   Tabs,
   Tab,
-  Divider,
-  useMediaQuery,
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -40,7 +35,7 @@ interface EnhancedProject {
   year?: string;
   challenges?: string[];
   solutions?: string[];
-  category?: 'fullstack' | 'frontend' | 'backend' | 'design';
+  category?: string; // Changed from specific union type to string to match actual data
 }
 
 // Enhanced project data with more details
@@ -69,7 +64,6 @@ const enhancedProjects: EnhancedProject[] = projectItems.map((project, index) =>
 const ProjectPage = () => {
   const theme = useTheme();
   const isDarkMode = theme.palette.mode === 'dark';
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [activeTab, setActiveTab] = useState<string | false>("all");
   const [selectedProject, setSelectedProject] = useState<EnhancedProject | null>(null);
 
@@ -93,7 +87,7 @@ const ProjectPage = () => {
     }
   };
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
+  const handleTabChange = (_: React.SyntheticEvent, newValue: string) => {
     setActiveTab(newValue);
   };
 
@@ -194,7 +188,7 @@ const ProjectPage = () => {
 
           <Grid container spacing={3} component={motion.div} variants={itemVariants}>
             {filteredProjects.map((project) => (
-              <Grid item xs={12} sm={6} md={4} key={project.id}>
+              <Grid xs={12} sm={6} md={4} key={project.id}>
                 <Card
                   className="dropBox"
                   sx={{
@@ -285,7 +279,7 @@ const ProjectPage = () => {
                 }}
               >
                 <Grid container spacing={4}>
-                  <Grid item xs={12} md={6}>
+                  <Grid xs={12} md={6}>
                     <motion.div variants={itemVariants}>
                       <Box
                         sx={{
@@ -323,7 +317,7 @@ const ProjectPage = () => {
                     </motion.div>
                   </Grid>
 
-                  <Grid item xs={12} md={6}>
+                  <Grid xs={12} md={6}>
                     <motion.div variants={itemVariants}>
                       <Typography variant="h3" gutterBottom>
                         {selectedProject.name}

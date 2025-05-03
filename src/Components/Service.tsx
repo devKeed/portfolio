@@ -16,7 +16,7 @@ const Service = () => {
       <Grid container mt={1} spacing={4} className="flexCenter">
         {serviceItems.map((service, id) => {
           return (
-            <Grid item xs={12} sm={6} md={4} key={id}>
+            <Grid xs={12} sm={6} md={4} key={id}>
               <Stack
                 padding={2}
                 spacing={2}

@@ -8,22 +8,22 @@ const Skills = () => {
   const isDarkMode = theme.palette.mode === "dark";
   const gridRef = useRef(null);
   const gridItemsRef = useRef<HTMLDivElement[]>([]);
-  
+
   // Register our grid items to the ref array
   const addToRefs = (el: HTMLDivElement | null) => {
     if (el && !gridItemsRef.current.includes(el)) {
       gridItemsRef.current.push(el);
     }
   };
-  
+
   useEffect(() => {
     // Create a GSAP context
     const ctx = gsap.context(() => {}, gridRef);
-    
+
     // Clean up the context on unmount
     return () => ctx.revert();
   }, []);
-  
+
   // Command key animation - rotate and scale items
   const handleCommandClick = () => {
     gsap.to(gridItemsRef.current, {
@@ -38,12 +38,12 @@ const Skills = () => {
           scale: 1,
           duration: 1.5,
           stagger: 0.03,
-          ease: "elastic.out(1, 0.3)"
+          ease: "elastic.out(1, 0.3)",
         });
-      }
+      },
     });
   };
-  
+
   // Space key animation - float items up
   const handleSpaceClick = () => {
     gsap.to(gridItemsRef.current, {
@@ -56,19 +56,14 @@ const Skills = () => {
           y: 0,
           duration: 1,
           stagger: 0.03,
-          ease: "bounce.out"
+          ease: "bounce.out",
         });
-      }
+      },
     });
   };
-  
+
   // Option key animation - shuffle items
   const handleOptionClick = () => {
-    const originalPositions = gridItemsRef.current.map(item => {
-      const rect = item.getBoundingClientRect();
-      return { x: rect.x, y: rect.y };
-    });
-    
     gsap.to(gridItemsRef.current, {
       x: () => Math.random() * 40 - 20,
       y: () => Math.random() * 40 - 20,
@@ -81,17 +76,18 @@ const Skills = () => {
           y: 0,
           duration: 1,
           stagger: 0.02,
-          ease: "back.out(1.7)"
+          ease: "back.out(1.7)",
         });
-      }
+      },
     });
   };
-  
+
   // Shift key animation - color pulse
   const handleShiftClick = () => {
-    gsap.fromTo(gridItemsRef.current, 
-      { 
-        // boxShadow: "2px 2px rgba(143, 255, 134, 0)" 
+    gsap.fromTo(
+      gridItemsRef.current,
+      {
+        // boxShadow: "2px 2px rgba(143, 255, 134, 0)"
       },
       {
         boxShadow: "0 0 15px rgba(143, 255, 134, 0.8)",
@@ -103,9 +99,9 @@ const Skills = () => {
         onComplete: () => {
           gsap.to(gridItemsRef.current, {
             // boxShadow: "2px 2px rgba(143, 255, 134, 0)",
-            duration: 0.5
+            duration: 0.5,
           });
-        }
+        },
       }
     );
   };
@@ -117,28 +113,36 @@ const Skills = () => {
           variant="h2"
           fontSize={{ xs: "1.7rem", sm: "2rem", lg: "2.5rem" }}
         >
-          <span itemProp="name">Fortune Adebiyi's </span>Ski<span style={{ color: "#8fff86" }}>ll</span>s
+          <span itemProp="name">Fortune Adebiyi's </span>Ski
+          <span style={{ color: "#8fff86" }}>ll</span>s
         </Typography>
         <Typography variant="body1" itemProp="description">
-          My primary stack includes React, MUI & Typescript. I have listed some of
-          the languages/tools I have used or still use below; there are a lot more
-          but these are the ones I deemed necessary to list.
+          My primary stack includes React, MUI & Typescript. I have listed some
+          of the languages/tools I have used or still use below; there are a lot
+          more but these are the ones I deemed necessary to list.
         </Typography>
         <div ref={gridRef}>
-          <Grid container mt={2} spacing={1} itemScope itemType="https://schema.org/ItemList">
+          <Grid
+            container
+            mt={2}
+            spacing={1}
+            itemScope
+            itemType="https://schema.org/ItemList"
+          >
             {skillItems.map((skill, id) => {
               return (
                 <Grid
+                  component="div"
                   item
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  lg={3}
+                  xs={6}
+                  sm={4}
+                  md={3}
+                  lg={2}
                   key={id}
                   sx={{ flexGrow: 1 }}
-                  itemProp="itemListElement"
+                  itemProp="hasSkill"
                   itemScope
-                  itemType="https://schema.org/ListItem"
+                  itemType="https://schema.org/DefinedTerm"
                 >
                   <Stack
                     padding={1}
@@ -176,7 +180,10 @@ const Skills = () => {
                         }}
                       />
                     </Stack>
-                    <Typography fontSize={{ xs: 11, sm: 14, md: 16 }} itemProp="name">
+                    <Typography
+                      fontSize={{ xs: 11, sm: 14, md: 16 }}
+                      itemProp="name"
+                    >
                       {skill.name}
                     </Typography>
                   </Stack>
@@ -185,31 +192,36 @@ const Skills = () => {
             })}
           </Grid>
           <Box flexDirection="row" display="flex" gap={1}>
-            <KeyBox 
-              text="command" 
-              icon="⌘" 
+            <KeyBox
+              text="command"
+              icon="⌘"
               width="30"
               onClick={handleCommandClick}
             />
-            <KeyBox 
-              text="space" 
-              icon="␣" 
+            <KeyBox
+              text="space"
+              icon="␣"
               width="45"
               onClick={handleSpaceClick}
             />
-            <KeyBox 
-              text="option" 
-              icon="⌥" 
+            <KeyBox
+              text="option"
+              icon="⌥"
               width="20"
               onClick={handleOptionClick}
             />
-            <KeyBox 
-              text="shift" 
-              icon="⇧" 
+            <KeyBox
+              text="shift"
+              icon="⇧"
               width="25"
               onClick={handleShiftClick}
             />
           </Box>
+          <div style={{ marginTop: "1rem", textAlign: "center" }}>
+            <Typography fontSize={{ xs: 9, sm: 12, md: 14 }} itemProp="name">
+              Press any of the keys above to see some fun animations!
+            </Typography>
+          </div>
         </div>
       </Stack>
     </section>
@@ -227,7 +239,7 @@ export const KeyBox = (props: {
   const theme = useTheme();
   const isDarkMode = theme.palette.mode === "dark";
   const keyRef = useRef(null);
-  
+
   // Add press effect animation
   const handleClick = () => {
     if (props.onClick) {
@@ -241,9 +253,9 @@ export const KeyBox = (props: {
             y: 0,
             // boxShadow: "0 3px 5px rgba(0,0,0,0.2)",
             duration: 0.2,
-            onComplete: props.onClick
+            onComplete: props.onClick,
           });
-        }
+        },
       });
     }
   };
@@ -267,7 +279,7 @@ export const KeyBox = (props: {
         },
         "&:active": {
           transform: "translateY(2px)",
-        }
+        },
       }}
     >
       {props.icon && (

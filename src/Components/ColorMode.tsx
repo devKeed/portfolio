@@ -5,7 +5,6 @@ import HomePage from "./HomePage";
 import Blog from "./Blog";
 import MainBar from "./MainBar";
 import { Footer } from "./Footer";
-import { useTheme } from "@mui/material";
 import ContactPage from "./ContactPage";
 import ProjectPage from "./ProjectPage";
 
@@ -22,7 +21,7 @@ export const ColorModeContext = React.createContext<ColorModeContextType>({
 });
 
 export default function ToggleColorMode() {
-  const [mode, setMode] = React.useState<"light" | "dark">("light");
+  const [mode, setMode] = React.useState<"light" | "dark">("dark");
   
   // Apply theme to document element
   React.useEffect(() => {

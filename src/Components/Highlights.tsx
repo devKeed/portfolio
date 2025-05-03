@@ -16,6 +16,13 @@ const Highlight = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   
+  // Theme-aware colors
+  const highlightColor = "#8fff86"; // This color works well in both modes
+  const chipBackground = theme.palette.mode === 'dark' ? theme.palette.grey[800] : "#dddddd";
+  const chipBorder = theme.palette.mode === 'dark' ? `1px solid ${theme.palette.grey[600]}` : "1px solid #000";
+  const projectBoxBackground = theme.palette.mode === 'dark' ? theme.palette.background.paper : "#fff";
+  const frameBorderColor = theme.palette.mode === 'dark' ? "#8fff86" : "#222";
+  
   return (
     <div>
       <Stack className="topSpace innerWidth" id="projects">
@@ -23,7 +30,7 @@ const Highlight = () => {
           variant="h2"
           fontSize={{ xs: "1.7rem", sm: "2rem", lg: "2.5rem" }}
         >
-          Projects <span style={{ color: "#8fff86" }}>Highlight</span>
+          Projects <span style={{ color: highlightColor }}>Highlight</span>
         </Typography>
         <Typography variant="body1">
           Here are the skills I've acquired over the years, and I'm continuously
@@ -77,8 +84,8 @@ const Highlight = () => {
                           padding={0.5}
                           fontSize={{ xs: 10, sm: 12, md: 14 }}
                           sx={{
-                            background: "",
-                            border: "1px solid #000",
+                            background: chipBackground,
+                            border: chipBorder,
                             borderRadius: "5px",
                             marginRight: "10px",
                             marginBottom: "10px",
@@ -110,10 +117,10 @@ const Highlight = () => {
                 <Stack
                   width="50%"
                   style={{
-                    borderRight: "10px solid #222",
-                    borderBottom: "10px solid #222",
-                    borderTop: "2px solid #222",
-                    borderLeft: "2px solid #222",
+                    borderRight: `10px solid ${frameBorderColor}`,
+                    borderBottom: `10px solid ${frameBorderColor}`,
+                    borderTop: `2px solid ${frameBorderColor}`,
+                    borderLeft: `2px solid ${frameBorderColor}`,
                     borderRadius: "5px",
                   }}
                 >
@@ -134,7 +141,7 @@ const Highlight = () => {
                   className="dropBox"
                   padding={2}
                   maxWidth={{ sm: 450, md: 480, lg: 550 }}
-                  sx={{ background: "#fff" }}
+                  sx={{ background: projectBoxBackground }}
                 >
                   <Stack overflow="hidden" mb={2}>
                     <img
@@ -162,8 +169,8 @@ const Highlight = () => {
                           padding={0.5}
                           fontSize={{ xs: 10, sm: 12, md: 14 }}
                           sx={{
-                            background: "#dddddd",
-                            border: "1px solid #000",
+                            background: chipBackground,
+                            border: chipBorder,
                             borderRadius: "5px",
                             marginRight: "10px",
                             marginBottom: "10px",
