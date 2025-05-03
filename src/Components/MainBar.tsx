@@ -103,9 +103,9 @@ const MainBar = () => {
 
   const menuItems = [
     { label: "Home", href: "/", ariaLabel: "Navigate to Fortune Adebiyi's homepage" },
-    { label: "My projects", href: "#projects", ariaLabel: "View Fortune Adebiyi's projects" },
+    { label: "Projects", href: "/projects", ariaLabel: "View Fortune Adebiyi's projects in detail" },
     { label: "Blog", href: "/blog", ariaLabel: "Read Fortune Adebiyi's blog posts" },
-    { label: "Contact me", href: "/contact", ariaLabel: "Contact Fortune Adebiyi" },
+    { label: "Contact", href: "/contact", ariaLabel: "Contact Fortune Adebiyi" },
   ];
 
   return (

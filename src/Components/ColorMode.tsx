@@ -7,6 +7,7 @@ import MainBar from "./MainBar";
 import { Footer } from "./Footer";
 import { useTheme } from "@mui/material";
 import ContactPage from "./ContactPage";
+import ProjectPage from "./ProjectPage";
 
 // Define the context type
 type ColorModeContextType = {
@@ -105,6 +106,7 @@ export default function ToggleColorMode() {
               <Route path="/" element={<HomePage />} />
               <Route path="/blog/*" element={<Blog />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/projects" element={<ProjectPage />} />
             </Routes>
           </div>
           <Footer />
