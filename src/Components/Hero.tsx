@@ -32,7 +32,8 @@ const Hero = () => {
   };
 
   return (
-    <div className="innerWidth">
+    <div className="innerWidth" id="about">
+      <h1 style={{ position: 'absolute', visibility: 'hidden' }}>Fortune Adebiyi - Fullstack Software Engineer Portfolio</h1>
       {!isMobile && (
         <Stack
           component={motion.div}
@@ -56,7 +57,7 @@ const Hero = () => {
               sx={{ color: theme.palette.text.primary }}
             >
               <Typewriter
-                words={["Hey! I'm Fortune, Fullstack Software Engineer"]}
+                words={["Hey! I'm Fortune Adebiyi, Fullstack Software Engineer"]}
                 loop={1}
                 cursor
                 cursorStyle="_"
@@ -73,6 +74,7 @@ const Hero = () => {
               variants={textVariants}
               sx={{ color: theme.palette.text.secondary }}
             >
+              I'm Fortune Adebiyi, a passionate Fullstack Software Engineer focused on creating impactful digital experiences.
               In my world, it's about merging technical expertise with aesthetics,
               ensuring every interaction is smooth and meaningful.
             </Typography>
@@ -93,7 +95,7 @@ const Hero = () => {
                 borderBottom: `8px solid ${theme.palette.mode === 'dark' ? '#fff' : '#000'}`
               }}
               src="./images/fortune_image.webp"
-              alt="Fortune's Image"
+              alt="Portrait of Fortune Adebiyi, Fullstack Software Engineer"
             />
           </Stack>
         </Stack>
@@ -121,7 +123,7 @@ const Hero = () => {
               sx={{ color: theme.palette.text.primary }}
             >
               <Typewriter
-                words={["Hey! I'm Fortune, Fullstack Software Engineer"]}
+                words={["Hey! I'm Fortune Adebiyi, Fullstack Software Engineer"]}
                 loop={1}
                 cursor
                 cursorStyle="_"
@@ -143,7 +145,7 @@ const Hero = () => {
                   borderRight: `5px solid ${theme.palette.mode === 'dark' ? '#fff' : '#000'}`, 
                   borderBottom: `8px solid ${theme.palette.mode === 'dark' ? '#fff' : '#000'}`
                 }}
-                alt="Fortune's Image"
+                alt="Portrait of Fortune Adebiyi, Fullstack Software Engineer"
               />
             </motion.div>
             <Typography
@@ -155,6 +157,7 @@ const Hero = () => {
               variants={textVariants}
               sx={{ color: theme.palette.text.secondary }}
             >
+              I'm Fortune Adebiyi, a passionate Fullstack Software Engineer focused on creating impactful digital experiences.
               In my world, it's about merging technical expertise with aesthetics,
               ensuring every interaction is smooth and meaningful.
             </Typography>

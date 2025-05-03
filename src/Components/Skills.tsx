@@ -111,103 +111,108 @@ const Skills = () => {
   };
 
   return (
-    <Stack className="topSpace innerWidth">
-      <Typography
-        variant="h2"
-        fontSize={{ xs: "1.7rem", sm: "2rem", lg: "2.5rem" }}
-      >
-        Ski<span style={{ color: "#8fff86" }}>ll</span>s
-      </Typography>
-      <Typography variant="body1">
-        My primary stack includes React, MUI & Typescript. I have listed some of
-        the languages/tools I have used or still use below; there are a lot more
-        but these are the ones I deemed necessary to list.
-      </Typography>
-      <div ref={gridRef}>
-        <Grid container mt={2} spacing={1}>
-          {skillItems.map((skill, id) => {
-            return (
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                md={4}
-                lg={3}
-                key={id}
-                sx={{ flexGrow: 1 }}
-              >
-                <Stack
-                  padding={1}
-                  className="flexCenter dropBox pop-up"
-                  ref={addToRefs}
-                  sx={{
-                    height: "100%",
-                    background: isDarkMode ? "#2a2a2a" : "#fff",
-                    color: isDarkMode ? "#fff" : "inherit",
-                    transformOrigin: "center center",
-                    "&:hover": {
-                      background: `${skill.color}`,
-                      color:
-                        skill.color === "#ffffff" ||
-                        skill.color.toLowerCase() === "#fff"
-                          ? "#000"
-                          : "inherit",
-                    },
-                  }}
+    <section id="skills" className="skills-section">
+      <Stack className="topSpace innerWidth">
+        <Typography
+          variant="h2"
+          fontSize={{ xs: "1.7rem", sm: "2rem", lg: "2.5rem" }}
+        >
+          <span itemProp="name">Fortune Adebiyi's </span>Ski<span style={{ color: "#8fff86" }}>ll</span>s
+        </Typography>
+        <Typography variant="body1" itemProp="description">
+          My primary stack includes React, MUI & Typescript. I have listed some of
+          the languages/tools I have used or still use below; there are a lot more
+          but these are the ones I deemed necessary to list.
+        </Typography>
+        <div ref={gridRef}>
+          <Grid container mt={2} spacing={1} itemScope itemType="https://schema.org/ItemList">
+            {skillItems.map((skill, id) => {
+              return (
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  key={id}
+                  sx={{ flexGrow: 1 }}
+                  itemProp="itemListElement"
+                  itemScope
+                  itemType="https://schema.org/ListItem"
                 >
                   <Stack
-                    height={{ xs: 18, sm: 26, md: 32 }}
-                    width={{ xs: 18, sm: 26, md: 32 }}
+                    padding={1}
+                    className="flexCenter dropBox pop-up"
+                    ref={addToRefs}
+                    sx={{
+                      height: "100%",
+                      background: isDarkMode ? "#2a2a2a" : "#fff",
+                      color: isDarkMode ? "#fff" : "inherit",
+                      transformOrigin: "center center",
+                      "&:hover": {
+                        background: `${skill.color}`,
+                        color:
+                          skill.color === "#ffffff" ||
+                          skill.color.toLowerCase() === "#fff"
+                            ? "#000"
+                            : "inherit",
+                      },
+                    }}
                   >
-                    <img
-                      height="100%"
-                      width="100%"
-                      src={skill.icon}
-                      alt=""
-                      style={{
-                        filter: isDarkMode
-                          ? "brightness(0) invert(1)"
-                          : "none",
-                        transition: "filter 0.3s ease",
-                      }}
-                    />
+                    <Stack
+                      height={{ xs: 18, sm: 26, md: 32 }}
+                      width={{ xs: 18, sm: 26, md: 32 }}
+                    >
+                      <img
+                        height="100%"
+                        width="100%"
+                        src={skill.icon}
+                        alt={`${skill.name} icon - Fortune Adebiyi skill`}
+                        style={{
+                          filter: isDarkMode
+                            ? "brightness(0) invert(1)"
+                            : "none",
+                          transition: "filter 0.3s ease",
+                        }}
+                      />
+                    </Stack>
+                    <Typography fontSize={{ xs: 11, sm: 14, md: 16 }} itemProp="name">
+                      {skill.name}
+                    </Typography>
                   </Stack>
-                  <Typography fontSize={{ xs: 11, sm: 14, md: 16 }}>
-                    {skill.name}
-                  </Typography>
-                </Stack>
-              </Grid>
-            );
-          })}
-        </Grid>
-        <Box flexDirection="row" display="flex" gap={1}>
-          <KeyBox 
-            text="command" 
-            icon="⌘" 
-            width="30"
-            onClick={handleCommandClick}
-          />
-          <KeyBox 
-            text="space" 
-            icon="␣" 
-            width="45"
-            onClick={handleSpaceClick}
-          />
-          <KeyBox 
-            text="option" 
-            icon="⌥" 
-            width="20"
-            onClick={handleOptionClick}
-          />
-          <KeyBox 
-            text="shift" 
-            icon="⇧" 
-            width="25"
-            onClick={handleShiftClick}
-          />
-        </Box>
-      </div>
-    </Stack>
+                </Grid>
+              );
+            })}
+          </Grid>
+          <Box flexDirection="row" display="flex" gap={1}>
+            <KeyBox 
+              text="command" 
+              icon="⌘" 
+              width="30"
+              onClick={handleCommandClick}
+            />
+            <KeyBox 
+              text="space" 
+              icon="␣" 
+              width="45"
+              onClick={handleSpaceClick}
+            />
+            <KeyBox 
+              text="option" 
+              icon="⌥" 
+              width="20"
+              onClick={handleOptionClick}
+            />
+            <KeyBox 
+              text="shift" 
+              icon="⇧" 
+              width="25"
+              onClick={handleShiftClick}
+            />
+          </Box>
+        </div>
+      </Stack>
+    </section>
   );
 };
 

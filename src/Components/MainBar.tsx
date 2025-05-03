@@ -102,14 +102,14 @@ const MainBar = () => {
   };
 
   const menuItems = [
-    { label: "Home", href: "/" },
-    { label: "My projects", href: "#projects" },
-    { label: "Blog", href: "/blog" },
-    { label: "Contact me", href: "#contact" },
+    { label: "Home", href: "/", ariaLabel: "Navigate to Fortune Adebiyi's homepage" },
+    { label: "My projects", href: "#projects", ariaLabel: "View Fortune Adebiyi's projects" },
+    { label: "Blog", href: "/blog", ariaLabel: "Read Fortune Adebiyi's blog posts" },
+    { label: "Contact me", href: "/contact", ariaLabel: "Contact Fortune Adebiyi" },
   ];
 
   return (
-    <div
+    <header
       style={{
         borderBottom: "1.5px solid",
         borderColor: theme.palette.mode === "dark" ? "#fff" : "#000",
@@ -133,47 +133,59 @@ const MainBar = () => {
               component={motion.p}
               sx={{ color: theme.palette.text.secondary }}
             >
-              Fortune{" "}
+              <span itemProp="name">Fortune</span>{" "}
               <span style={{ color: theme.palette.primary.main }}>Dev</span>
             </Typography>
           </Link>
-          <Stack direction="row" spacing={4} alignItems="center">
-            {menuItems.map((item, index) => {
-              // Use standard anchor tag for hash links (section navigation)
-              if (item.href.startsWith('#')) {
+          <nav>
+            <Stack direction="row" spacing={4} alignItems="center">
+              {menuItems.map((item, index) => {
+                // Use standard anchor tag for hash links (section navigation)
+                if (item.href.startsWith('#')) {
+                  return (
+                    <a 
+                      key={index} 
+                      href={item.href} 
+                      style={{ textDecoration: 'none', color: 'inherit' }}
+                      aria-label={item.ariaLabel}
+                    >
+                      <Typography fontWeight="bold">{item.label}</Typography>
+                    </a>
+                  );
+                }
+                // Use React Router's Link for page navigation
                 return (
-                  <a key={index} href={item.href} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <Link 
+                    key={index} 
+                    to={item.href} 
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                    aria-label={item.ariaLabel}
+                  >
                     <Typography fontWeight="bold">{item.label}</Typography>
-                  </a>
+                  </Link>
                 );
-              }
-              // Use React Router's Link for page navigation
-              return (
-                <Link key={index} to={item.href} style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <Typography fontWeight="bold">{item.label}</Typography>
-                </Link>
-              );
-            })}
-            <Stack direction="row" alignItems="center" spacing={1}>
-              <IconButton
-                sx={{ ml: 1 }}
-                onClick={colorMode.toggleColorMode}
-                color="inherit"
-                aria-label="toggle dark/light mode"
-              >
-                {theme.palette.mode === "dark" ? (
-                  <Brightness7Icon />
-                ) : (
-                  <Brightness4Icon />
-                )}
-              </IconButton>
-              <MaterialUISwitch
-                checked={theme.palette.mode === "dark"}
-                onChange={colorMode.toggleColorMode}
-                inputProps={{ "aria-label": "toggle dark/light mode" }}
-              />
+              })}
+              <Stack direction="row" alignItems="center" spacing={1}>
+                <IconButton
+                  sx={{ ml: 1 }}
+                  onClick={colorMode.toggleColorMode}
+                  color="inherit"
+                  aria-label="toggle dark/light mode"
+                >
+                  {theme.palette.mode === "dark" ? (
+                    <Brightness7Icon />
+                  ) : (
+                    <Brightness4Icon />
+                  )}
+                </IconButton>
+                <MaterialUISwitch
+                  checked={theme.palette.mode === "dark"}
+                  onChange={colorMode.toggleColorMode}
+                  inputProps={{ "aria-label": "toggle dark/light mode" }}
+                />
+              </Stack>
             </Stack>
-          </Stack>
+          </nav>
         </Stack>
       )}
 
@@ -188,8 +200,13 @@ const MainBar = () => {
               zIndex: 100,
             }}
           >
-            <Link to="/" style={{ textDecoration: 'none' }}>
-              <img src="images\fortune_logo.webp" height={30} alt="" />
+            <Link to="/" style={{ textDecoration: 'none' }} aria-label="Fortune Adebiyi's homepage">
+              <img 
+                src="images\fortune_logo.webp" 
+                height={30} 
+                alt="Fortune Adebiyi - Portfolio Logo" 
+                loading="eager"
+              />
             </Link>
             <Stack direction="row" alignItems="center">
               <MaterialUISwitch
@@ -200,6 +217,8 @@ const MainBar = () => {
               />
               <IconButton
                 onClick={toggleMenu}
+                aria-label={openMenu ? "Close navigation menu" : "Open navigation menu"}
+                aria-expanded={openMenu}
                 sx={{
                   transition: "transform 0.3s ease",
                   transform: openMenu ? "rotate(180deg)" : "rotate(0deg)",
@@ -218,7 +237,7 @@ const MainBar = () => {
 
           <AnimatePresence>
             {openMenu && (
-              <motion.div
+              <motion.nav
                 initial="closed"
                 animate="open"
                 exit="closed"
@@ -230,6 +249,7 @@ const MainBar = () => {
                     theme.palette.mode === "dark" ? "#fff" : "#000"
                   }`,
                 }}
+                aria-label="Mobile navigation"
               >
                 <Stack
                   spacing={3}
@@ -247,7 +267,8 @@ const MainBar = () => {
                         color: theme.palette.text.primary,
                         textDecoration: 'none'
                       },
-                      onClick: () => setOpenMenu(false)
+                      onClick: () => setOpenMenu(false),
+                      "aria-label": item.ariaLabel
                     };
                     
                     const content = (
@@ -287,12 +308,12 @@ const MainBar = () => {
                     );
                   })}
                 </Stack>
-              </motion.div>
+              </motion.nav>
             )}
           </AnimatePresence>
         </>
       )}
-    </div>
+    </header>
   );
 };
 

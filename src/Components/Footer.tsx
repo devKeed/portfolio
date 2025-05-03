@@ -1,5 +1,4 @@
-import { Stack, Typography } from "@mui/material";
-import Grid from "@mui/material/Grid";
+import { Stack, Grid, Typography } from "@mui/material";
 // import TwitterIcon from "@mui/icons-material/Twitter";
 // import CallIcon from "@mui/icons-material/Call";
 // import LinkedinIcon from "@mui/icons-material/LinkedIn";
@@ -11,6 +10,12 @@ export const Footer = () => {
     <Stack className="topSpace" sx={{ borderTop: "1.5px solid #444444" }}>
       <div className="flexCenter">
         <Grid container className="innerWidth">
+          <Grid item xs={12} sm={6}>
+            <Typography variant="body2">
+              Fortune Adebiyi ©{currentYear}
+            </Typography>
+          </Grid>
+
           {/* <Grid
             item
             xs={12}
@@ -37,10 +42,6 @@ export const Footer = () => {
               </a>
             </Stack>
           </Grid> */}
-
-          <Typography variant="body2">
-            Fortune Adebiyi ©{currentYear}
-          </Typography>
         </Grid>
       </div>
       <div className="footer"></div>
