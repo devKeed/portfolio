@@ -140,7 +140,6 @@ const MainBar = () => {
           <nav>
             <Stack direction="row" spacing={4} alignItems="center">
               {menuItems.map((item, index) => {
-                // Use standard anchor tag for hash links (section navigation)
                 if (item.href.startsWith('#')) {
                   return (
                     <a 
