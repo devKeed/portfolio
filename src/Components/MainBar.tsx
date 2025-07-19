@@ -152,7 +152,6 @@ const MainBar = () => {
                     </a>
                   );
                 }
-                // Use React Router's Link for page navigation
                 return (
                   <Link 
                     key={index} 
