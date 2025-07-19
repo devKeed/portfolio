@@ -102,17 +102,33 @@ const MainBar = () => {
   };
 
   const menuItems = [
-    { label: "Home", href: "/", ariaLabel: "Navigate to Fortune Adebiyi's homepage" },
-    { label: "Projects", href: "/projects", ariaLabel: "View Fortune Adebiyi's projects in detail" },
-    { label: "Blog", href: "/blog", ariaLabel: "Read Fortune Adebiyi's blog posts" },
-    { label: "Contact", href: "/contact", ariaLabel: "Contact Fortune Adebiyi" },
+    {
+      label: "Home",
+      href: "/",
+      ariaLabel: "Navigate to Fortune Adebiyi's homepage",
+    },
+    {
+      label: "Projects",
+      href: "/projects",
+      ariaLabel: "View Fortune Adebiyi's projects in detail",
+    },
+    {
+      label: "Blog",
+      href: "/blog",
+      ariaLabel: "Read Fortune Adebiyi's blog posts",
+    },
+    {
+      label: "Contact",
+      href: "/contact",
+      ariaLabel: "Contact Fortune Adebiyi",
+    },
   ];
 
   return (
     <header
       style={{
-        borderBottom: "1.5px solid",
-        borderColor: theme.palette.mode === "dark" ? "#fff" : "#000",
+        borderBottom: "1px solid",
+        borderColor: theme.palette.mode === "dark" ? "#666" : "#000",
         color: theme.palette.text.primary,
       }}
     >
@@ -124,7 +140,7 @@ const MainBar = () => {
           spacing={2}
           className="flexBetween innerWidth"
         >
-          <Link to="/" style={{ textDecoration: 'none' }}>
+          <Link to="/" style={{ textDecoration: "none" }}>
             <Typography
               variant="body1"
               textAlign="center"
@@ -133,20 +149,22 @@ const MainBar = () => {
               component={motion.p}
               sx={{ color: theme.palette.text.secondary }}
             >
-              <span itemProp="name">Fortune</span>{" "}
-              <span style={{ color: theme.palette.primary.main }}>Dev</span>
+              <span itemProp="name">Fortune</span>
+              <span
+                style={{ color: theme.palette.primary.main }}
+              >{`<Adebiyi>`}</span>
             </Typography>
           </Link>
           <nav>
             <Stack direction="row" spacing={4} alignItems="center">
               {menuItems.map((item, index) => {
                 // Use standard anchor tag for hash links (section navigation)
-                if (item.href.startsWith('#')) {
+                if (item.href.startsWith("#")) {
                   return (
-                    <a 
-                      key={index} 
-                      href={item.href} 
-                      style={{ textDecoration: 'none', color: 'inherit' }}
+                    <a
+                      key={index}
+                      href={item.href}
+                      style={{ textDecoration: "none", color: "inherit" }}
                       aria-label={item.ariaLabel}
                     >
                       <Typography fontWeight="bold">{item.label}</Typography>
@@ -155,10 +173,10 @@ const MainBar = () => {
                 }
                 // Use React Router's Link for page navigation
                 return (
-                  <Link 
-                    key={index} 
-                    to={item.href} 
-                    style={{ textDecoration: 'none', color: 'inherit' }}
+                  <Link
+                    key={index}
+                    to={item.href}
+                    style={{ textDecoration: "none", color: "inherit" }}
                     aria-label={item.ariaLabel}
                   >
                     <Typography fontWeight="bold">{item.label}</Typography>
@@ -200,11 +218,15 @@ const MainBar = () => {
               zIndex: 100,
             }}
           >
-            <Link to="/" style={{ textDecoration: 'none' }} aria-label="Fortune Adebiyi's homepage">
-              <img 
-                src="images\fortune_logo.webp" 
-                height={30} 
-                alt="Fortune Adebiyi - Portfolio Logo" 
+            <Link
+              to="/"
+              style={{ textDecoration: "none" }}
+              aria-label="Fortune Adebiyi's homepage"
+            >
+              <img
+                src="images\fortune_logo.webp"
+                height={30}
+                alt="Fortune Adebiyi - Portfolio Logo"
                 loading="eager"
               />
             </Link>
@@ -217,7 +239,9 @@ const MainBar = () => {
               />
               <IconButton
                 onClick={toggleMenu}
-                aria-label={openMenu ? "Close navigation menu" : "Open navigation menu"}
+                aria-label={
+                  openMenu ? "Close navigation menu" : "Open navigation menu"
+                }
                 aria-expanded={openMenu}
                 sx={{
                   transition: "transform 0.3s ease",
@@ -265,12 +289,12 @@ const MainBar = () => {
                         textAlign: "center" as const,
                         padding: "10px 0",
                         color: theme.palette.text.primary,
-                        textDecoration: 'none'
+                        textDecoration: "none",
                       },
                       onClick: () => setOpenMenu(false),
-                      "aria-label": item.ariaLabel
+                      "aria-label": item.ariaLabel,
                     };
-                    
+
                     const content = (
                       <Typography
                         fontWeight="bold"
@@ -284,7 +308,8 @@ const MainBar = () => {
                             height: "2px",
                             bottom: "-5px",
                             left: "50%",
-                            backgroundColor: theme.palette.mode === "dark" ? "#fff" : "#000",
+                            backgroundColor:
+                              theme.palette.mode === "dark" ? "#fff" : "#000",
                             transition: "all 0.3s ease",
                             transform: "translateX(-50%)",
                           },
@@ -296,13 +321,17 @@ const MainBar = () => {
                         {item.label}
                       </Typography>
                     );
-                    
+
                     return (
                       <motion.div key={index} variants={menuItemVariants}>
-                        {item.href.startsWith('#') ? (
-                          <a href={item.href} {...linkProps}>{content}</a>
+                        {item.href.startsWith("#") ? (
+                          <a href={item.href} {...linkProps}>
+                            {content}
+                          </a>
                         ) : (
-                          <Link to={item.href} {...linkProps}>{content}</Link>
+                          <Link to={item.href} {...linkProps}>
+                            {content}
+                          </Link>
                         )}
                       </motion.div>
                     );

@@ -114,7 +114,7 @@ const Skills = () => {
           variant="h2"
           fontSize={{ xs: "1.7rem", sm: "2rem", lg: "2.5rem" }}
         >
-          <span itemProp="name">Fortune Adebiyi's </span>Ski
+Ski
           <span style={{ color: "#8fff86" }}>ll</span>s
         </Typography>
         <Typography variant="body1" itemProp="description">

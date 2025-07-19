@@ -62,17 +62,9 @@ const Contact = () => {
         >
           {" "}
           <Typography variant="h1" maxWidth={700} fontSize={{ xs: "2rem", sm: "2.5rem", lg: "3.1rem" }}>
-            Let's work together with <span itemProp="name">Fortune Adebiyi</span> on your next{" "}
+            Let's work together with on your next{" "}
             <span style={{ color: "#8fff86", marginLeft: "10px" }}>project</span>{" "}
           </Typography>
-        </Typography>
-
-        <Typography 
-          variant="body1" 
-          sx={{ marginBottom: 2, marginTop: 1 }}
-          itemProp="description"
-        >
-          Connect with Fortune Adebiyi using any of the following contact methods to discuss your project needs and how we can work together.
         </Typography>
 
         {contactItems.map((item, index) => (

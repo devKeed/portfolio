@@ -3,18 +3,15 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./HomePage";
 import Blog from "./Blog";
-import MainBar from "./MainBar";
 import { Footer } from "./Footer";
 import ContactPage from "./ContactPage";
 import ProjectPage from "./ProjectPage";
 
-// Define the context type
 type ColorModeContextType = {
   toggleColorMode: () => void;
   mode: "light" | "dark";
 };
 
-// Export the context so it can be used in other components
 export const ColorModeContext = React.createContext<ColorModeContextType>({ 
   toggleColorMode: () => {},
   mode: "light"
@@ -23,7 +20,6 @@ export const ColorModeContext = React.createContext<ColorModeContextType>({
 export default function ToggleColorMode() {
   const [mode, setMode] = React.useState<"light" | "dark">("dark");
   
-  // Apply theme to document element
   React.useEffect(() => {
     document.documentElement.setAttribute('data-theme', mode);
   }, [mode]);
@@ -99,8 +95,7 @@ export default function ToggleColorMode() {
           overflow: "hidden",
           color: theme.palette.text.primary,
         }}>
-          <MainBar />
-          <div style={{ margin: "auto", maxWidth: "1100px" }}>
+          <div style={{ margin: "auto", maxWidth: "1400px" }}>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/blog/*" element={<Blog />} />

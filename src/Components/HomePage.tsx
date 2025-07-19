@@ -1,5 +1,5 @@
 import Hero from "./Hero";
-import { Music } from "./Music";
+// import { Music } from "./Music";
 import Service from "./Service";
 import Skills from "./Skills";
 import Contact from "./Contact";
@@ -10,7 +10,7 @@ function HomePage() {
   return (
     <>
       <Hero />
-      <Music />
+      {/* <Music /> */}
       <Service />
       <Skills />
       <Highlight />

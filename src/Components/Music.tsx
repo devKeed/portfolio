@@ -58,18 +58,12 @@ export const Music = () => {
           <Spotify
             wide
             width="100%"
-            height={160}
+            height={460}
             link="https://open.spotify.com/playlist/641VXxv32Yu44wKVVoDxZk?si=ae67597d17f84c25"
           />
-          <Stack>
-            <Typography variant="h3">I love music</Typography>
-            <Typography variant="body1" maxWidth={500}>
-              You can listen to this crafted playlist "Euphoria" while you get
-              to know me more, checkout my skills and some projects I've got my
-              hands on.
-            </Typography>
-          </Stack>
+        
         </Stack>
+         
         <Stack
           direction="row"
           sx={{
