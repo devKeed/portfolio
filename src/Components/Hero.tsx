@@ -1,11 +1,13 @@
 import { Box, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import MyButton from "./reusables/MyButton";
 import MainBar from "./MainBar";
 
 const Hero = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -13,10 +15,10 @@ const Hero = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.4,
         ease: "easeOut",
         when: "beforeChildren",
-        staggerChildren: 0.3,
+        staggerChildren: 0.1,
       },
     },
   };
@@ -26,7 +28,7 @@ const Hero = () => {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.7, ease: "easeOut" },
+      transition: { duration: 0.5, ease: "easeOut" },
     },
   };
 
@@ -35,7 +37,7 @@ const Hero = () => {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.7, ease: "easeOut" },
+      transition: { duration: 0.5, ease: "easeOut" },
     },
   };
 
@@ -117,9 +119,14 @@ const Hero = () => {
                   borderBottom: `8px solid ${
                     theme.palette.mode === "dark" ? "#fff" : "#000"
                   }`,
+                  opacity: imageLoaded ? 1 : 0.8,
+                  transition: "opacity 0.3s ease",
                 }}
                 src="./images/fortune_image.webp"
                 alt="Portrait of Fortune Adebiyi, Fullstack Software Engineer"
+                loading="eager"
+                fetchPriority="high"
+                onLoad={() => setImageLoaded(true)}
               />
             </Stack>
           </Stack>
@@ -165,12 +172,18 @@ const Hero = () => {
               >
                 <img
                   height={200}
+                  width={200}
                   className="float"
                   src="./images/fortune_image.webp"
                   style={{
                     borderRadius: "50%",
+                    opacity: imageLoaded ? 1 : 0.8,
+                    transition: "opacity 0.3s ease",
                   }}
                   alt="Portrait of Fortune Adebiyi, Fullstack Software Engineer"
+                  loading="eager"
+                  fetchPriority="high"
+                  onLoad={() => setImageLoaded(true)}
                 />
               </motion.div>
               <Typography
