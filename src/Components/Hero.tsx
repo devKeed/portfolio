@@ -9,6 +9,18 @@ const Hero = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [imageLoaded, setImageLoaded] = useState(false);
 
+  // Add CSS keyframes for marquee
+  const marqueeStyle = `
+    @keyframes marqueeScroll {
+      0% {
+        transform: translateX(-50%) translateY(-50%);
+      }
+      100% {
+        transform: translateX(-100%) translateY(-50%);
+      }
+    }
+  `;
+
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -42,7 +54,48 @@ const Hero = () => {
   };
 
   return (
-    <div style={{ minHeight: "100vh" }}>
+    <div
+      style={{ minHeight: "100vh", position: "relative", overflow: "hidden" }}
+    >
+      {/* Inject CSS for marquee animation */}
+      <style>{marqueeStyle}</style>
+
+      {/* Background Marquee */}
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "0",
+          width: "100%",
+          height: "100%",
+          transform: "translateY(-50%)",
+          zIndex: -1,
+          pointerEvents: "none",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translateX(-50%) translateY(-50%)",
+            fontSize: isMobile ? "6rem" : "35rem",
+            fontWeight: 900,
+            color:
+              theme.palette.mode === "dark"
+                ? "rgba(255, 255, 255, 0.02)"
+                : "rgba(0, 0, 0, 0.02)",
+            whiteSpace: "nowrap",
+            fontFamily: "PPValve-Medium, sans-serif",
+            animation: "marqueeScroll 560s linear infinite",
+          }}
+        >
+          Fortune Adebiyi Fortune Adebiyi Fortune Adebiyi Fortune Adebiyi
+          Fortune Adebiyi
+        </div>
+      </div>
+
       <MainBar />
       <div
         className="innerWidth"
@@ -54,153 +107,76 @@ const Hero = () => {
           justifyContent: "center",
         }}
       >
-        {!isMobile && (
+        <Stack
+          gap={5}
+          className="flexCenter"
+          component={motion.div}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           <Stack
+            spacing={1}
+            sx={{ display: "flex", alignItems: "center" }}
             component={motion.div}
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            whileInView={{ opacity: 1, x: 0 }}
-            direction="row"
-            gap={{ xs: 2, lg: 10 }}
-            className="flexBetween topSpace"
+            variants={textVariants}
           >
-            <Stack
-              spacing={1}
-              sx={{ display: "flex", alignItems: "start" }}
-              component={motion.div}
-              variants={textVariants}
+            <Typography
+              variant="h1"
+              fontSize={{ xs: "2rem", sm: "2.5rem", lg: "5rem" }}
+              textAlign="center"
+              sx={{ color: theme.palette.text.primary }}
             >
-              <Typography
-                variant="h1"
-                fontSize={{ xs: "2rem", sm: "2.5rem", lg: "5rem" }}
-                sx={{ color: theme.palette.text.primary }}
-              >
-                Hello! I'm
-              </Typography>
-              <Typography
-                variant="h1"
-                fontSize={{ xs: "2rem", sm: "2.5rem", lg: "5rem" }}
-                sx={{ color: theme.palette.text.primary }}
-              >
-                Fortune Adebiyi
-              </Typography>
-              <Typography
-                variant="body1"
-                style={{ maxWidth: 500 }}
-                mt={2}
-                pb={3}
-                component={motion.p}
-                variants={textVariants}
-                sx={{ color: theme.palette.text.secondary }}
-              >
-                A Fullstack Software Engineer. In my world, it's about merging
-                scalable systems with aesthetics
-              </Typography>
-              <Box>
-                <MyButton text="Download CV" />
-              </Box>
-            </Stack>
-            <Stack
-              height={{ md: 310, lg: 370 }}
-              component={motion.div}
+              Hi! I'm Fortune a
+            </Typography>
+            <Typography
+              variant="h1"
+              fontSize={{ xs: "2rem", sm: "2.5rem", lg: "5rem" }}
+              textAlign="center"
+              sx={{ color: theme.palette.text.primary }}
+            >
+              Software Engineer
+            </Typography>
+            {/* <motion.div
               variants={imageVariants}
-              style={{}}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                width: "100%",
+              }}
             >
               <img
+                height={200}
+                width={200}
                 className="float"
-                height="100%"
+                src="./images/fortune_image.webp"
                 style={{
-                  marginLeft: "auto",
-                  borderRadius: "50%",
-                  borderRight: `5px solid ${
-                    theme.palette.mode === "dark" ? "#fff" : "#000"
-                  }`,
-                  borderBottom: `8px solid ${
-                    theme.palette.mode === "dark" ? "#fff" : "#000"
-                  }`,
                   opacity: imageLoaded ? 1 : 0.8,
                   transition: "opacity 0.3s ease",
                 }}
-                src="./images/fortune_image.webp"
                 alt="Portrait of Fortune Adebiyi, Fullstack Software Engineer"
                 loading="eager"
                 fetchPriority="high"
                 onLoad={() => setImageLoaded(true)}
               />
-            </Stack>
-          </Stack>
-        )}
-        {isMobile && (
-          <Stack
-            gap={5}
-            className="flexCenter"
-            component={motion.div}
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <Stack
-              spacing={1}
-              sx={{ display: "flex", alignItems: "center" }}
-              component={motion.div}
+            </motion.div> */}
+            <Typography
+              variant="body1"
+              textAlign="center"
+              style={{ maxWidth: 450 }}
+              pt={2}
+              component={motion.p}
               variants={textVariants}
+              sx={{ color: theme.palette.text.secondary }}
             >
-              <Typography
-                variant="h1"
-                fontSize={{ xs: "2rem", sm: "2.5rem", lg: "5rem" }}
-                textAlign="center"
-                sx={{ color: theme.palette.text.primary }}
-              >
-                Hello! I'm
-              </Typography>
-              <Typography
-                variant="h1"
-                fontSize={{ xs: "2rem", sm: "2.5rem", lg: "5rem" }}
-                textAlign="center"
-                sx={{ color: theme.palette.text.primary }}
-              >
-                Fortune Adebiyi
-              </Typography>
-              <motion.div
-                variants={imageVariants}
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  width: "100%",
-                }}
-              >
-                <img
-                  height={200}
-                  width={200}
-                  className="float"
-                  src="./images/fortune_image.webp"
-                  style={{
-                    borderRadius: "50%",
-                    opacity: imageLoaded ? 1 : 0.8,
-                    transition: "opacity 0.3s ease",
-                  }}
-                  alt="Portrait of Fortune Adebiyi, Fullstack Software Engineer"
-                  loading="eager"
-                  fetchPriority="high"
-                  onLoad={() => setImageLoaded(true)}
-                />
-              </motion.div>
-              <Typography
-                variant="body1"
-                textAlign="center"
-                style={{ maxWidth: 700 }}
-                mt={2}
-                component={motion.p}
-                variants={textVariants}
-                sx={{ color: theme.palette.text.secondary }}
-              >
-                A Fullstack Software Engineer. In my world, it's about merging
-                scalable systems with aesthetics
-              </Typography>
-            </Stack>
+              A Fullstack Software Engineer. In my world, it's about merging
+              scalable systems with aesthetics
+            </Typography>
+            <Box pt={2}>
+              <MyButton text="Download CV" />
+            </Box>
           </Stack>
-        )}
+        </Stack>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@
   --button-hover-bg: #3b71ff;
   --button-hover-color: #fff;
   --box-shadow-color: #000;
-  
+
   /* Global typography variables */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,7 +19,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
   /* Dark mode variables */
   --background-color: #121212;
   --background-grid-color: #333;
@@ -76,6 +76,21 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "PPValve-Medium";
+  src: url("/fonts/PPValve-PlainMedium-BF676a3861e801f.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PPValve-Stencil";
+  src: url("/fonts/PPValve-StencilMedium-BF676a3861c9d83.otf")
+    format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   opacity: 1;
   background-color: var(--background-color);
@@ -106,6 +121,15 @@ a {
 a:hover {
   cursor: pointer;
   color: var(--hover-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #ddd !important;
 }
 
 .flexCenter {
@@ -217,7 +241,11 @@ a:hover {
 
 .footer {
   height: 4rem;
-  background-image: linear-gradient(to right, var(--border-color) 1px, transparent 1px),
+  background-image: linear-gradient(
+      to right,
+      var(--border-color) 1px,
+      transparent 1px
+    ),
     linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
   background-size: 2rem 2rem;
   background-position: center center;

@@ -58,22 +58,25 @@ export default function ToggleColorMode() {
             fontSize: "3.1rem",
             fontWeight: "8000",
             lineHeight: "1.2em",
-            fontFamily: "PPMori-Bold, sans-serif;",
+            fontFamily: "PPValve-Medium, sans-serif;",
+              color: "#BABABA"
           },
           h2: {
             fontSize: "2.6rem",
             fontWeight: "8000",
             lineHeight: "1.2em",
-            fontFamily: "PPMori-Bold, sans-serif;",
+            fontFamily: "PPValve-Medium, sans-serif;",
+            color: "#BABABA"
           },
           h3: {
             fontSize: "1.5rem",
             fontWeight: "8000",
             lineHeight: "1.2em",
-            fontFamily: "PPMori-Bold, sans-serif;",
+            fontFamily: "PPValve-Medium, sans-serif;",
+              color: "#BABABA"
           },
           h5: {
-            fontFamily: "PPMori-Bold, sans-serif;",
+            fontFamily: "PPValve-Medium, sans-serif;",
           },
           button: {
             textTransform: "none",
@@ -95,7 +98,7 @@ export default function ToggleColorMode() {
           overflow: "hidden",
           color: theme.palette.text.primary,
         }}>
-          <div style={{ margin: "auto", maxWidth: "1400px" }}>
+          <div style={{ margin: "auto",  }}>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/blog/*" element={<Blog />} />

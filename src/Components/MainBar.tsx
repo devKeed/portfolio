@@ -9,8 +9,6 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ColorModeContext } from "./ColorMode";
@@ -130,17 +128,25 @@ const MainBar = () => {
         borderBottom: "1px solid",
         borderColor: theme.palette.mode === "dark" ? "#666" : "#000",
         color: theme.palette.text.primary,
+        maxWidth: "1400px",
+        margin: "auto",
       }}
     >
-      {!isMobile && (
-        <Stack
-          sx={{
-            flexDirection: { xs: "column", md: "row", margin: "auto" },
-          }}
-          spacing={2}
-          className="flexBetween innerWidth"
+      <Stack
+        direction="row"
+        className="innerWidth flexBetween"
+        sx={{
+          padding: "10px 0",
+          position: "relative",
+          zIndex: 100,
+        }}
+      >
+        <Link
+          to="/"
+          style={{ textDecoration: "none" }}
+          aria-label="Fortune Adebiyi's homepage"
         >
-          <Link to="/" style={{ textDecoration: "none" }}>
+          {!isMobile ? (
             <Typography
               variant="body1"
               textAlign="center"
@@ -154,194 +160,128 @@ const MainBar = () => {
                 style={{ color: theme.palette.primary.main }}
               >{`<Adebiyi>`}</span>
             </Typography>
-          </Link>
-          <nav>
-            <Stack direction="row" spacing={4} alignItems="center">
-              {menuItems.map((item, index) => {
-                // Use standard anchor tag for hash links (section navigation)
-                if (item.href.startsWith("#")) {
-                  return (
-                    <a
-                      key={index}
-                      href={item.href}
-                      style={{ textDecoration: "none", color: "inherit" }}
-                      aria-label={item.ariaLabel}
-                    >
-                      <Typography fontWeight="bold">{item.label}</Typography>
-                    </a>
-                  );
-                }
-                // Use React Router's Link for page navigation
-                return (
-                  <Link
-                    key={index}
-                    to={item.href}
-                    style={{ textDecoration: "none", color: "inherit" }}
-                    aria-label={item.ariaLabel}
-                  >
-                    <Typography fontWeight="bold">{item.label}</Typography>
-                  </Link>
-                );
-              })}
-              <Stack direction="row" alignItems="center" spacing={1}>
-                <IconButton
-                  sx={{ ml: 1 }}
-                  onClick={colorMode.toggleColorMode}
-                  color="inherit"
-                  aria-label="toggle dark/light mode"
-                >
-                  {theme.palette.mode === "dark" ? (
-                    <Brightness7Icon />
-                  ) : (
-                    <Brightness4Icon />
-                  )}
-                </IconButton>
-                <MaterialUISwitch
-                  checked={theme.palette.mode === "dark"}
-                  onChange={colorMode.toggleColorMode}
-                  inputProps={{ "aria-label": "toggle dark/light mode" }}
-                />
-              </Stack>
-            </Stack>
-          </nav>
-        </Stack>
-      )}
-
-      {isMobile && (
-        <>
-          <Stack
-            direction="row"
-            className="innerWidth flexBetween"
+          ) : (
+            <img
+              src="images\fortune_logo.webp"
+              height={30}
+              alt="Fortune Adebiyi - Portfolio Logo"
+              loading="eager"
+            />
+          )}
+        </Link>
+        <Stack direction="row" alignItems="center">
+          <MaterialUISwitch
+            checked={theme.palette.mode === "dark"}
+            onChange={colorMode.toggleColorMode}
+            size={isMobile ? "small" : "medium"}
+            inputProps={{ "aria-label": "toggle dark/light mode" }}
+          />
+          <IconButton
+            onClick={toggleMenu}
+            aria-label={
+              openMenu ? "Close navigation menu" : "Open navigation menu"
+            }
+            aria-expanded={openMenu}
             sx={{
-              padding: "10px 0",
-              position: "relative",
-              zIndex: 100,
+              transition: "transform 0.3s ease",
+              transform: openMenu ? "rotate(180deg)" : "rotate(0deg)",
             }}
           >
-            <Link
-              to="/"
-              style={{ textDecoration: "none" }}
-              aria-label="Fortune Adebiyi's homepage"
+            <motion.div
+              initial={false}
+              animate={{ rotate: openMenu ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
             >
-              <img
-                src="images\fortune_logo.webp"
-                height={30}
-                alt="Fortune Adebiyi - Portfolio Logo"
-                loading="eager"
-              />
-            </Link>
-            <Stack direction="row" alignItems="center">
-              <MaterialUISwitch
-                checked={theme.palette.mode === "dark"}
-                onChange={colorMode.toggleColorMode}
-                size="small"
-                inputProps={{ "aria-label": "toggle dark/light mode" }}
-              />
-              <IconButton
-                onClick={toggleMenu}
-                aria-label={
-                  openMenu ? "Close navigation menu" : "Open navigation menu"
-                }
-                aria-expanded={openMenu}
-                sx={{
-                  transition: "transform 0.3s ease",
-                  transform: openMenu ? "rotate(180deg)" : "rotate(0deg)",
-                }}
-              >
-                <motion.div
-                  initial={false}
-                  animate={{ rotate: openMenu ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {openMenu ? <CloseIcon /> : <MenuIcon />}
-                </motion.div>
-              </IconButton>
-            </Stack>
-          </Stack>
+              {openMenu ? <CloseIcon /> : <MenuIcon />}
+            </motion.div>
+          </IconButton>
+        </Stack>
+      </Stack>
 
-          <AnimatePresence>
-            {openMenu && (
-              <motion.nav
-                initial="closed"
-                animate="open"
-                exit="closed"
-                variants={menuVariants}
-                style={{
-                  overflow: "hidden",
-                  background: theme.palette.background.default,
-                  borderTop: `1.5px solid ${
-                    theme.palette.mode === "dark" ? "#fff" : "#000"
-                  }`,
-                }}
-                aria-label="Mobile navigation"
-              >
-                <Stack
-                  spacing={3}
-                  sx={{
-                    padding: "20px 0 40px",
-                    width: "100%",
-                  }}
-                >
-                  {menuItems.map((item, index) => {
-                    const linkProps = {
-                      style: {
-                        display: "block",
-                        textAlign: "center" as const,
-                        padding: "10px 0",
-                        color: theme.palette.text.primary,
-                        textDecoration: "none",
+      <AnimatePresence>
+        {openMenu && (
+          <motion.nav
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={menuVariants}
+            style={{
+              overflow: "hidden",
+              background: theme.palette.background.default,
+              borderTop: `1.5px solid ${
+                theme.palette.mode === "dark" ? "#fff" : "#000"
+              }`,
+              position: "absolute",
+              width: "100%",
+              zIndex: 99,
+            }}
+            aria-label="Navigation menu"
+          >
+            <Stack
+              spacing={3}
+              sx={{
+                padding: "20px 0 40px",
+                width: "100%",
+              }}
+            >
+              {menuItems.map((item, index) => {
+                const linkProps = {
+                  style: {
+                    display: "block",
+                    textAlign: "center" as const,
+                    padding: "10px 0",
+                    color: theme.palette.text.primary,
+                    textDecoration: "none",
+                  },
+                  onClick: () => setOpenMenu(false),
+                  "aria-label": item.ariaLabel,
+                };
+
+                const content = (
+                  <Typography
+                    fontWeight="bold"
+                    variant="h5"
+                    sx={{
+                      position: "relative",
+                      "&::after": {
+                        content: '""',
+                        position: "absolute",
+                        width: "0%",
+                        height: "2px",
+                        bottom: "-5px",
+                        left: "50%",
+                        backgroundColor:
+                          theme.palette.mode === "dark" ? "#fff" : "#000",
+                        transition: "all 0.3s ease",
+                        transform: "translateX(-50%)",
                       },
-                      onClick: () => setOpenMenu(false),
-                      "aria-label": item.ariaLabel,
-                    };
+                      "&:hover::after": {
+                        width: "40%",
+                      },
+                    }}
+                  >
+                    {item.label}
+                  </Typography>
+                );
 
-                    const content = (
-                      <Typography
-                        fontWeight="bold"
-                        variant="h5"
-                        sx={{
-                          position: "relative",
-                          "&::after": {
-                            content: '""',
-                            position: "absolute",
-                            width: "0%",
-                            height: "2px",
-                            bottom: "-5px",
-                            left: "50%",
-                            backgroundColor:
-                              theme.palette.mode === "dark" ? "#fff" : "#000",
-                            transition: "all 0.3s ease",
-                            transform: "translateX(-50%)",
-                          },
-                          "&:hover::after": {
-                            width: "40%",
-                          },
-                        }}
-                      >
-                        {item.label}
-                      </Typography>
-                    );
-
-                    return (
-                      <motion.div key={index} variants={menuItemVariants}>
-                        {item.href.startsWith("#") ? (
-                          <a href={item.href} {...linkProps}>
-                            {content}
-                          </a>
-                        ) : (
-                          <Link to={item.href} {...linkProps}>
-                            {content}
-                          </Link>
-                        )}
-                      </motion.div>
-                    );
-                  })}
-                </Stack>
-              </motion.nav>
-            )}
-          </AnimatePresence>
-        </>
-      )}
+                return (
+                  <motion.div key={index} variants={menuItemVariants}>
+                    {item.href.startsWith("#") ? (
+                      <a href={item.href} {...linkProps}>
+                        {content}
+                      </a>
+                    ) : (
+                      <Link to={item.href} {...linkProps}>
+                        {content}
+                      </Link>
+                    )}
+                  </motion.div>
+                );
+              })}
+            </Stack>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
