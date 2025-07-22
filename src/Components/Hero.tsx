@@ -17,40 +17,31 @@ const Hero = () => {
 
   useEffect(() => {
     if (verticalLineRef.current && shineRef.current) {
-      // Animate the vertical line growing
+      // Set initial state and animate the vertical line growing
+      gsap.set(verticalLineRef.current, { height: "100px", opacity: 1 });
+
       gsap.fromTo(
         verticalLineRef.current,
-        { height: 0 },
+        { scaleY: 0, transformOrigin: "top center" },
         {
-          height: "100px",
+          scaleY: 1,
           duration: 1.5,
           ease: "power2.out",
-          scrollTrigger: {
-            trigger: verticalLineRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
+          delay: 1, // Add delay to show after other elements
         }
       );
 
-      // Animate the shine effect
+      // Animate the shine effect continuously
       gsap.fromTo(
         shineRef.current,
         { y: "-100%", opacity: 0 },
         {
-          y: "100%",
+          y: "200%",
           opacity: 1,
-          duration: 2,
+          duration: 3,
           ease: "power2.inOut",
           repeat: -1,
-          yoyo: true,
-          scrollTrigger: {
-            trigger: verticalLineRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none pause",
-          },
+          delay: 2, // Start after line animation
         }
       );
     }
@@ -172,20 +163,26 @@ const Hero = () => {
             <Box
               ref={verticalLineRef}
               sx={{
-                width: "2px",
+                width: "3px", // Made slightly wider
                 height: "100px",
                 background: `linear-gradient(180deg, 
                   transparent 0%, 
-                  ${theme.palette.mode === "dark" ? "#ffffff" : "#333333"} 20%, 
-                  ${theme.palette.mode === "dark" ? "#e0e0e0" : "#666666"} 80%, 
+                  ${
+                    theme.palette.mode === "dark" ? "#64CF5CFF" : "#44AF3CFF"
+                  } 30%, 
+                  ${theme.palette.mode === "dark" ? "#ffffff" : "#333333"} 50%, 
+                  ${
+                    theme.palette.mode === "dark" ? "#64CF5CFF" : "#44AF3CFF"
+                  } 70%, 
                   transparent 100%)`,
                 position: "relative",
                 overflow: "hidden",
-                borderRadius: "1px",
+                borderRadius: "2px",
                 boxShadow:
                   theme.palette.mode === "dark"
-                    ? "0 0 10px rgba(255, 255, 255, 0.3)"
-                    : "0 0 10px rgba(0, 0, 0, 0.2)",
+                    ? "0 0 20px rgba(100, 207, 92, 0.4)"
+                    : "0 0 20px rgba(68, 175, 60, 0.4)",
+                opacity: 1, // Ensure it's visible
               }}
             >
               {/* Shine effect */}
@@ -196,16 +193,17 @@ const Hero = () => {
                   top: 0,
                   left: 0,
                   right: 0,
-                  height: "20px",
+                  height: "30px",
                   background: `linear-gradient(180deg, 
                     transparent 0%, 
                     ${
                       theme.palette.mode === "dark"
-                        ? "rgba(255, 255, 255, 0.8)"
-                        : "rgba(255, 255, 255, 0.9)"
+                        ? "rgba(255, 255, 255, 0.9)"
+                        : "rgba(255, 255, 255, 1)"
                     } 50%, 
                     transparent 100%)`,
-                  filter: "blur(1px)",
+                  filter: "blur(2px)",
+                  borderRadius: "2px",
                 }}
               />
             </Box>

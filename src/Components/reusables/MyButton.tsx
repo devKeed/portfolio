@@ -1,5 +1,6 @@
-import { useTheme } from "@mui/material";
+import { Typography, useTheme } from "@mui/material";
 import { useState } from "react";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 const MyButton = ({ text, link }: { text: string; link: string }) => {
   const theme = useTheme();
@@ -77,9 +78,14 @@ const MyButton = ({ text, link }: { text: string; link: string }) => {
         onMouseLeave={() => setIsHovered(false)}
         role="button"
       >
-        <span style={firstSpanStyle}>{text}</span>
-        <span style={secondSpanStyle}>{text}</span>
-        <div style={afterElementStyle} />
+     <div style={{display:"flex"}}>   <div><Typography fontFamily="PPValve-Stencil">
+          <span style={firstSpanStyle}>{text}</span>
+        </Typography>
+         <Typography fontFamily="PPValve-Stencil">
+          <span style={secondSpanStyle}>{text}</span>
+        </Typography>
+        <div style={afterElementStyle} /></div>
+        <ArrowOutwardIcon sx={{ marginLeft: 1 }} /></div>
       </button>
     </a>
   );

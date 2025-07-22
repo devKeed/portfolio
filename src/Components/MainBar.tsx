@@ -189,6 +189,7 @@ const MainBar = () => {
         >
             <Typography
               variant="body1"
+              fontFamily="PPValve-Medium"
               textAlign="center"
               style={{ maxWidth: 700, fontSize: "1.5rem" }}
               mt={2}
@@ -198,7 +199,7 @@ const MainBar = () => {
               <span itemProp="name">Fortune</span>
               <span
                 style={{ color: theme.palette.primary.main }}
-              >{`<Adebiyi>`}</span>
+              >{`{Adebiyi}`}</span>
             </Typography>
           
         </Link>
