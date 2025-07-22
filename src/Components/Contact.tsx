@@ -1,4 +1,4 @@
-import { Stack, Typography, IconButton } from "@mui/material";
+import { Stack, Typography, IconButton, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
@@ -6,42 +6,44 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 const contactItems = [
-  { 
-    icon: <PhoneIcon />, 
-    label: "Call Fortune Adebiyi", 
+  {
+    icon: <PhoneIcon />,
+    label: "Call Fortune Adebiyi",
     link: "tel:+2347063807894",
     itemProp: "telephone",
-    value: "+2347063807894" 
+    value: "+2347063807894",
   },
   {
     icon: <EmailIcon />,
     label: "Email Fortune Adebiyi",
     link: "mailto:fortuneadebiyi@gmail.com",
     itemProp: "email",
-    value: "fortuneadebiyi@gmail.com"
+    value: "fortuneadebiyi@gmail.com",
   },
   {
     icon: <WhatsAppIcon />,
     label: "Chat with Fortune on WhatsApp",
     link: "https://wa.me/2348027725422",
     itemProp: "sameAs",
-    value: "https://wa.me/2348027725422"
+    value: "https://wa.me/2348027725422",
   },
   {
     icon: <GitHubIcon />,
     label: "Fortune Adebiyi's GitHub",
     link: "https://github.com/pledreDev",
     itemProp: "sameAs",
-    value: "https://github.com/pledreDev"
+    value: "https://github.com/pledreDev",
   },
 ];
 
 const Contact = () => {
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === "dark";
   return (
-    <section 
-      id="contact" 
-      className="contact-section" 
-      itemScope 
+    <section
+      id="contact"
+      className="contact-section"
+      itemScope
       itemType="https://schema.org/Person"
     >
       <meta itemProp="name" content="Fortune Adebiyi" />
@@ -61,9 +63,20 @@ const Contact = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           {" "}
-          <Typography variant="h1" maxWidth={700} fontSize={{ xs: "2rem", sm: "2.5rem", lg: "3.1rem" }}>
+          <Typography
+            variant="h1"
+            maxWidth={700}
+            fontSize={{ xs: "2rem", sm: "2.5rem", lg: "3.1rem" }}
+          >
             Let's work together with on your next{" "}
-            <span style={{ color: "#8fff86", marginLeft: "10px" }}>project</span>{" "}
+            <span
+              style={{
+                color: isDarkMode ? "#64CF5CFF" : "#44AF3CFF",
+                marginLeft: "10px",
+              }}
+            >
+              project
+            </span>{" "}
           </Typography>
         </Typography>
 

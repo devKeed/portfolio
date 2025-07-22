@@ -1,4 +1,4 @@
-import Grid from '@mui/material/GridLegacy';
+import Grid from "@mui/material/GridLegacy";
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import { skillItems } from "../data/skillsData";
 import { useEffect, useRef } from "react";
@@ -114,8 +114,11 @@ const Skills = () => {
           variant="h2"
           fontSize={{ xs: "1.7rem", sm: "2rem", lg: "2.5rem" }}
         >
-Ski
-          <span style={{ color: "#8fff86" }}>ll</span>s
+          Ski
+          <span style={{ color: isDarkMode ? "#64CF5CFF" : "#44AF3CFF" }}>
+            ll
+          </span>
+          s
         </Typography>
         <Typography variant="body1" itemProp="description">
           My primary stack includes React, MUI & Typescript. I have listed some

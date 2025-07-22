@@ -225,6 +225,7 @@ const BlogPostDetail = () => {
 // Component to display blog listing
 const BlogListing = () => {
   const theme = useTheme();
+  const isDarkMode = theme.palette.mode === "dark";
   const [searchTerm, setSearchTerm] = useState("");
 
   // Filter posts based on search term
@@ -264,7 +265,8 @@ const BlogListing = () => {
   return (
     <Stack spacing={3} className="topSpace innerWidth">
       <Typography variant="h2">
-        Blo<span style={{ color: "#8fff86" }}>g</span>
+        Blo
+        <span style={{ color: isDarkMode ? "#64CF5CFF" : "#44AF3CFF" }}>g</span>
       </Typography>
       <Typography variant="body1">
         Thoughts, stories and ideas on web development, design, and technology.

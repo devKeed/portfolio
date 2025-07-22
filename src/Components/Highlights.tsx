@@ -1,7 +1,19 @@
-import { Button, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Button,
+  Stack,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { motion } from "framer-motion";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
-import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from "react";
+import {
+  ReactElement,
+  JSXElementConstructor,
+  ReactNode,
+  ReactPortal,
+  Key,
+} from "react";
 import { projectItems } from "../data/MapItems";
 
 const styles = {
@@ -14,15 +26,22 @@ const styles = {
 
 const Highlight = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
   // Theme-aware colors
-  const highlightColor = "#8fff86"; // This color works well in both modes
-  const chipBackground = theme.palette.mode === 'dark' ? theme.palette.grey[800] : "#dddddd";
-  const chipBorder = theme.palette.mode === 'dark' ? `1px solid ${theme.palette.grey[600]}` : "1px solid #000";
-  const projectBoxBackground = theme.palette.mode === 'dark' ? theme.palette.background.paper : "#fff";
-  const frameBorderColor = theme.palette.mode === 'dark' ? "#8fff86" : "#222";
-  
+  const highlightColor =
+    theme.palette.mode === "dark" ? "#64CF5CFF" : "#44AF3CFF";
+  const chipBackground =
+    theme.palette.mode === "dark" ? theme.palette.grey[800] : "#dddddd";
+  const chipBorder =
+    theme.palette.mode === "dark"
+      ? `1px solid ${theme.palette.grey[600]}`
+      : "1px solid #000";
+  const projectBoxBackground =
+    theme.palette.mode === "dark" ? theme.palette.background.paper : "#fff";
+  const frameBorderColor =
+    theme.palette.mode === "dark" ? "#64CF5CFF" : "#44AF3CFF";
+
   return (
     <div>
       <Stack className="topSpace innerWidth" id="projects">
@@ -40,61 +59,334 @@ const Highlight = () => {
 
       {!isMobile && (
         <Stack>
-          {projectItems.map((item: { name: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; description: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; tech: string[]; link: string; button: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; image: string | undefined; }, index: number) => {
-            return (
-              <Stack
-                mt={15}
-                direction="row"
-                key={index}
-                sx={{
-                  ...styles.flexBetween,
-                  flexDirection: (index ?? 0) % 2 === 1 ? "row-reverse" : "row",
-                }}
-              >
+          {projectItems.map(
+            (
+              item: {
+                name:
+                  | string
+                  | number
+                  | bigint
+                  | boolean
+                  | ReactElement<unknown, string | JSXElementConstructor<any>>
+                  | Iterable<ReactNode>
+                  | ReactPortal
+                  | Promise<
+                      | string
+                      | number
+                      | bigint
+                      | boolean
+                      | ReactPortal
+                      | ReactElement<
+                          unknown,
+                          string | JSXElementConstructor<any>
+                        >
+                      | Iterable<ReactNode>
+                      | null
+                      | undefined
+                    >
+                  | null
+                  | undefined;
+                description:
+                  | string
+                  | number
+                  | bigint
+                  | boolean
+                  | ReactElement<unknown, string | JSXElementConstructor<any>>
+                  | Iterable<ReactNode>
+                  | ReactPortal
+                  | Promise<
+                      | string
+                      | number
+                      | bigint
+                      | boolean
+                      | ReactPortal
+                      | ReactElement<
+                          unknown,
+                          string | JSXElementConstructor<any>
+                        >
+                      | Iterable<ReactNode>
+                      | null
+                      | undefined
+                    >
+                  | null
+                  | undefined;
+                tech: string[];
+                link: string;
+                button:
+                  | string
+                  | number
+                  | bigint
+                  | boolean
+                  | ReactElement<unknown, string | JSXElementConstructor<any>>
+                  | Iterable<ReactNode>
+                  | ReactPortal
+                  | Promise<
+                      | string
+                      | number
+                      | bigint
+                      | boolean
+                      | ReactPortal
+                      | ReactElement<
+                          unknown,
+                          string | JSXElementConstructor<any>
+                        >
+                      | Iterable<ReactNode>
+                      | null
+                      | undefined
+                    >
+                  | null
+                  | undefined;
+                image: string | undefined;
+              },
+              index: number
+            ) => {
+              return (
                 <Stack
-                  spacing={2}
-                  style={{
-                    maxWidth: "400px",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "start",
-                    margin: "auto",
-                    padding: "1rem",
+                  mt={15}
+                  direction="row"
+                  key={index}
+                  sx={{
+                    ...styles.flexBetween,
+                    flexDirection:
+                      (index ?? 0) % 2 === 1 ? "row-reverse" : "row",
                   }}
                 >
-                  <motion.div
-                    initial={{ opacity: 0, x: -80 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1.5, type: "spring" }}
-                    viewport={{ once: true }}
+                  <Stack
+                    spacing={2}
+                    style={{
+                      maxWidth: "400px",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "start",
+                      margin: "auto",
+                      padding: "1rem",
+                    }}
                   >
-                    <Typography variant="h3">{item.name}</Typography>
-                    <Typography variant="body1">{item.description}</Typography>
+                    <motion.div
+                      initial={{ opacity: 0, x: -80 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 1.5, type: "spring" }}
+                      viewport={{ once: true }}
+                    >
+                      <Typography variant="h3">{item.name}</Typography>
+                      <Typography variant="body1">
+                        {item.description}
+                      </Typography>
 
+                      <Stack
+                        mt={2}
+                        maxWidth={{ md: 300, lg: 350 }}
+                        direction="row"
+                        sx={{ display: "flex", flexWrap: "wrap" }}
+                      >
+                        {item.tech.map((tool: string, id: number) => {
+                          return (
+                            <Typography
+                              key={id}
+                              padding={0.5}
+                              fontSize={{ xs: 10, sm: 12, md: 14 }}
+                              sx={{
+                                background: chipBackground,
+                                border: chipBorder,
+                                borderRadius: "5px",
+                                marginRight: "10px",
+                                marginBottom: "10px",
+                              }}
+                            >
+                              {tool}
+                            </Typography>
+                          );
+                        })}
+                      </Stack>
+                      <Stack pb={2} pt={2}>
+                        <motion.a
+                          className="box"
+                          whileHover={{ scale: 1.05 }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 400,
+                            damping: 20,
+                          }}
+                        >
+                          <Button variant="contained" href={item.link}>
+                            {item.button} <ArrowOutwardIcon fontSize="small" />
+                          </Button>
+                        </motion.a>
+                      </Stack>
+                    </motion.div>
+                  </Stack>
+
+                  <Stack
+                    width="50%"
+                    style={{
+                      borderRight: `10px solid ${frameBorderColor}`,
+                      borderBottom: `10px solid ${frameBorderColor}`,
+                      borderTop: `2px solid ${frameBorderColor}`,
+                      borderLeft: `2px solid ${frameBorderColor}`,
+                      borderRadius: "5px",
+                    }}
+                  >
+                    <img src={item.image} width="100%" height="100%" alt="" />
+                  </Stack>
+                </Stack>
+              );
+            }
+          )}
+        </Stack>
+      )}
+
+      {isMobile &&
+        projectItems.map(
+          (
+            project: {
+              image: string | undefined;
+              name:
+                | string
+                | number
+                | bigint
+                | boolean
+                | ReactElement<unknown, string | JSXElementConstructor<any>>
+                | Iterable<ReactNode>
+                | ReactPortal
+                | Promise<
+                    | string
+                    | number
+                    | bigint
+                    | boolean
+                    | ReactPortal
+                    | ReactElement<unknown, string | JSXElementConstructor<any>>
+                    | Iterable<ReactNode>
+                    | null
+                    | undefined
+                  >
+                | null
+                | undefined;
+              description:
+                | string
+                | number
+                | bigint
+                | boolean
+                | ReactElement<unknown, string | JSXElementConstructor<any>>
+                | Iterable<ReactNode>
+                | ReactPortal
+                | Promise<
+                    | string
+                    | number
+                    | bigint
+                    | boolean
+                    | ReactPortal
+                    | ReactElement<unknown, string | JSXElementConstructor<any>>
+                    | Iterable<ReactNode>
+                    | null
+                    | undefined
+                  >
+                | null
+                | undefined;
+              tech: any[];
+              link: string;
+              button:
+                | string
+                | number
+                | bigint
+                | boolean
+                | ReactElement<unknown, string | JSXElementConstructor<any>>
+                | Iterable<ReactNode>
+                | ReactPortal
+                | Promise<
+                    | string
+                    | number
+                    | bigint
+                    | boolean
+                    | ReactPortal
+                    | ReactElement<unknown, string | JSXElementConstructor<any>>
+                    | Iterable<ReactNode>
+                    | null
+                    | undefined
+                  >
+                | null
+                | undefined;
+            },
+            id: Key | null | undefined
+          ) => {
+            return (
+              <Stack key={id} mt={2} className="flexBetween">
+                <Stack spacing={2} mt={3} p={2}>
+                  <Stack
+                    className="dropBox"
+                    padding={2}
+                    maxWidth={{ sm: 450, md: 480, lg: 550 }}
+                    sx={{ background: projectBoxBackground }}
+                  >
+                    <Stack overflow="hidden" mb={2}>
+                      <img
+                        src={project.image}
+                        className="scale-up"
+                        height="100%"
+                        width="100%"
+                        alt=""
+                      />
+                    </Stack>
+                    <Typography variant="h5" fontWeight="bold">
+                      {project.name}
+                    </Typography>
+                    <Typography variant="body2">
+                      {project.description}
+                    </Typography>
                     <Stack
-                      mt={2}
                       maxWidth={{ md: 300, lg: 350 }}
                       direction="row"
+                      mt={2}
                       sx={{ display: "flex", flexWrap: "wrap" }}
                     >
-                        {item.tech.map((tool: string, id: number) => {
-                        return (
-                          <Typography
-                          key={id}
-                          padding={0.5}
-                          fontSize={{ xs: 10, sm: 12, md: 14 }}
-                          sx={{
-                            background: chipBackground,
-                            border: chipBorder,
-                            borderRadius: "5px",
-                            marginRight: "10px",
-                            marginBottom: "10px",
-                          }}
-                          >
-                          {tool}
-                          </Typography>
-                        );
-                        })}
+                      {project.tech.map(
+                        (
+                          tool:
+                            | string
+                            | number
+                            | bigint
+                            | boolean
+                            | ReactElement<
+                                unknown,
+                                string | JSXElementConstructor<any>
+                              >
+                            | Iterable<ReactNode>
+                            | ReactPortal
+                            | Promise<
+                                | string
+                                | number
+                                | bigint
+                                | boolean
+                                | ReactPortal
+                                | ReactElement<
+                                    unknown,
+                                    string | JSXElementConstructor<any>
+                                  >
+                                | Iterable<ReactNode>
+                                | null
+                                | undefined
+                              >
+                            | null
+                            | undefined,
+                          id: Key | null | undefined
+                        ) => {
+                          return (
+                            <Typography
+                              key={id}
+                              padding={0.5}
+                              fontSize={{ xs: 10, sm: 12, md: 14 }}
+                              sx={{
+                                background: chipBackground,
+                                border: chipBorder,
+                                borderRadius: "5px",
+                                marginRight: "10px",
+                                marginBottom: "10px",
+                              }}
+                            >
+                              {tool}
+                            </Typography>
+                          );
+                        }
+                      )}
                     </Stack>
                     <Stack pb={2} pt={2}>
                       <motion.a
@@ -106,102 +398,17 @@ const Highlight = () => {
                           damping: 20,
                         }}
                       >
-                        <Button variant="contained" href={item.link}>
-                          {item.button} <ArrowOutwardIcon fontSize="small" />
+                        <Button variant="contained" href={project.link}>
+                          {project.button} <ArrowOutwardIcon fontSize="small" />
                         </Button>
                       </motion.a>
                     </Stack>
-                  </motion.div>
-                </Stack>
-
-                <Stack
-                  width="50%"
-                  style={{
-                    borderRight: `10px solid ${frameBorderColor}`,
-                    borderBottom: `10px solid ${frameBorderColor}`,
-                    borderTop: `2px solid ${frameBorderColor}`,
-                    borderLeft: `2px solid ${frameBorderColor}`,
-                    borderRadius: "5px",
-                  }}
-                >
-                  <img src={item.image} width="100%" height="100%" alt="" />
+                  </Stack>
                 </Stack>
               </Stack>
             );
-          })}
-        </Stack>
-      )}
-
-      {isMobile && (
-        projectItems.map((project: { image: string | undefined; name: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; description: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; tech: any[]; link: string; button: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; }, id: Key | null | undefined) => {
-          return (
-            <Stack key={id} mt={2} className="flexBetween">
-              <Stack spacing={2} mt={3} p={2}>
-                <Stack
-                  className="dropBox"
-                  padding={2}
-                  maxWidth={{ sm: 450, md: 480, lg: 550 }}
-                  sx={{ background: projectBoxBackground }}
-                >
-                  <Stack overflow="hidden" mb={2}>
-                    <img
-                      src={project.image}
-                      className="scale-up"
-                      height="100%"
-                      width="100%"
-                      alt=""
-                    />
-                  </Stack>
-                  <Typography variant="h5" fontWeight="bold">
-                    {project.name}
-                  </Typography>
-                  <Typography variant="body2">{project.description}</Typography>
-                  <Stack
-                    maxWidth={{ md: 300, lg: 350 }}
-                    direction="row"
-                    mt={2}
-                    sx={{ display: "flex", flexWrap: "wrap" }}
-                  >
-                    {project.tech.map((tool: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined, id: Key | null | undefined) => {
-                      return (
-                        <Typography
-                          key={id}
-                          padding={0.5}
-                          fontSize={{ xs: 10, sm: 12, md: 14 }}
-                          sx={{
-                            background: chipBackground,
-                            border: chipBorder,
-                            borderRadius: "5px",
-                            marginRight: "10px",
-                            marginBottom: "10px",
-                          }}
-                        >
-                          {tool}
-                        </Typography>
-                      );
-                    })}
-                  </Stack>
-                  <Stack pb={2} pt={2}>
-                    <motion.a
-                      className="box"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 20,
-                      }}
-                    >
-                      <Button variant="contained" href={project.link}>
-                        {project.button} <ArrowOutwardIcon fontSize="small" />
-                      </Button>
-                    </motion.a>
-                  </Stack>
-                </Stack>
-              </Stack>
-            </Stack>
-          );
-        })
-      )}
+          }
+        )}
     </div>
   );
 };

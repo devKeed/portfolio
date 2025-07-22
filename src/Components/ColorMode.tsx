@@ -12,18 +12,18 @@ type ColorModeContextType = {
   mode: "light" | "dark";
 };
 
-export const ColorModeContext = React.createContext<ColorModeContextType>({ 
+export const ColorModeContext = React.createContext<ColorModeContextType>({
   toggleColorMode: () => {},
-  mode: "light"
+  mode: "light",
 });
 
 export default function ToggleColorMode() {
   const [mode, setMode] = React.useState<"light" | "dark">("dark");
-  
+
   React.useEffect(() => {
-    document.documentElement.setAttribute('data-theme', mode);
+    document.documentElement.setAttribute("data-theme", mode);
   }, [mode]);
-  
+
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
@@ -41,7 +41,7 @@ export default function ToggleColorMode() {
         palette: {
           mode,
           primary: {
-            main: "#8fff86",
+            main: mode === "dark" ? "#64CF5CFF" : "#44AF3CFF",
           },
           secondary: {
             main: "#784ef4",
@@ -59,21 +59,18 @@ export default function ToggleColorMode() {
             fontWeight: "8000",
             lineHeight: "1.2em",
             fontFamily: "PPValve-Medium, sans-serif;",
-    
           },
           h2: {
             fontSize: "2.6rem",
             fontWeight: "8000",
             lineHeight: "1.2em",
             fontFamily: "PPValve-Medium, sans-serif;",
-  
           },
           h3: {
             fontSize: "1.5rem",
             fontWeight: "8000",
             lineHeight: "1.2em",
             fontFamily: "PPValve-Medium, sans-serif;",
-    
           },
           h5: {
             fontFamily: "PPValve-Medium, sans-serif;",
@@ -93,12 +90,14 @@ export default function ToggleColorMode() {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        <div style={{
-          margin: "auto",
-          overflow: "hidden",
-          color: theme.palette.text.primary,
-        }}>
-          <div style={{ margin: "auto",  }}>
+        <div
+          style={{
+            margin: "auto",
+            overflow: "hidden",
+            color: theme.palette.text.primary,
+          }}
+        >
+          <div style={{ margin: "auto" }}>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/blog/*" element={<Blog />} />

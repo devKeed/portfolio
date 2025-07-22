@@ -3,23 +3,12 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import MyButton from "./reusables/MyButton";
 import MainBar from "./MainBar";
+import { BackgroundMarquee } from "./BackgroundMarquee";
 
 const Hero = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [imageLoaded, setImageLoaded] = useState(false);
-
-  // Add CSS keyframes for marquee
-  const marqueeStyle = `
-    @keyframes marqueeScroll {
-      0% {
-        transform: translateX(-50%) translateY(-50%);
-      }
-      100% {
-        transform: translateX(-100%) translateY(-50%);
-      }
-    }
-  `;
 
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -57,44 +46,7 @@ const Hero = () => {
     <div
       style={{ minHeight: "100vh", position: "relative", overflow: "hidden" }}
     >
-      {/* Inject CSS for marquee animation */}
-      <style>{marqueeStyle}</style>
-
-      {/* Background Marquee */}
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "0",
-          width: "100%",
-          height: "100%",
-          transform: "translateY(-50%)",
-          zIndex: -1,
-          pointerEvents: "none",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translateX(-50%) translateY(-50%)",
-            fontSize: isMobile ? "6rem" : "35rem",
-            fontWeight: 900,
-            color:
-              theme.palette.mode === "dark"
-                ? "rgba(255, 255, 255, 0.02)"
-                : "rgba(0, 0, 0, 0.03)",
-            whiteSpace: "nowrap",
-            fontFamily: "PPValve-Medium, sans-serif",
-            animation: "marqueeScroll 560s linear infinite",
-          }}
-        >
-          Fortune Adebiyi Fortune Adebiyi Fortune Adebiyi Fortune Adebiyi
-          Fortune Adebiyi
-        </div>
-      </div>
+      <BackgroundMarquee />
 
       <MainBar />
       <div
@@ -137,7 +89,25 @@ const Hero = () => {
             >
               Software Engineer
             </Typography>
-            {/* <motion.div
+         
+            <Typography
+              variant="body1"
+              textAlign="center"
+              style={{ maxWidth: 450 }}
+              pt={2}
+              component={motion.p}
+              variants={textVariants}
+              sx={{ color: theme.palette.text.secondary }}
+            >
+              A Fullstack Software Engineer. In my world, it's about merging
+              scalable systems with aesthetics
+            </Typography>
+            <Box pt={2}>
+              <MyButton text="Download CV" />
+            </Box>
+          </Stack>
+
+             {/* <motion.div
               variants={imageVariants}
               style={{
                 display: "flex",
@@ -160,22 +130,6 @@ const Hero = () => {
                 onLoad={() => setImageLoaded(true)}
               />
             </motion.div> */}
-            <Typography
-              variant="body1"
-              textAlign="center"
-              style={{ maxWidth: 450 }}
-              pt={2}
-              component={motion.p}
-              variants={textVariants}
-              sx={{ color: theme.palette.text.secondary }}
-            >
-              A Fullstack Software Engineer. In my world, it's about merging
-              scalable systems with aesthetics
-            </Typography>
-            <Box pt={2}>
-              <MyButton text="Download CV" />
-            </Box>
-          </Stack>
         </Stack>
       </div>
     </div>

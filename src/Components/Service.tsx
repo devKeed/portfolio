@@ -1,18 +1,22 @@
-import Grid from '@mui/material/GridLegacy';
+import Grid from "@mui/material/GridLegacy";
 import { Stack, Typography, useTheme } from "@mui/material";
 import { serviceItems } from "../data/MapItems";
 
 const Service = () => {
   const theme = useTheme();
-  const isDarkMode = theme.palette.mode === 'dark';
-  
+  const isDarkMode = theme.palette.mode === "dark";
+
   return (
     <Stack className="topSpace innerWidth flexCenter">
       <Typography
         variant="h2"
         fontSize={{ xs: "1.7rem", sm: "2rem", lg: "2.5rem" }}
       >
-        What do I <span style={{ color: "#8fff86" }}>do</span>?
+        What do I{" "}
+        <span style={{ color: isDarkMode ? "#64CF5CFF" : "#44AF3CFF" }}>
+          do
+        </span>
+        ?
       </Typography>
       <Grid container mt={1} spacing={4} className="flexCenter">
         {serviceItems.map((service, id) => {
@@ -26,9 +30,9 @@ const Service = () => {
                 sx={{
                   background: isDarkMode ? "#2a2a2a" : "#fff",
                   color: isDarkMode ? "#fff" : "inherit",
-                  "&:hover": { 
-                    background: "#8fff86",
-                    color: isDarkMode ? "#000" : "inherit" 
+                  "&:hover": {
+                    background: isDarkMode ? "#64CF5CFF" : "#44AF3CFF",
+                    color: isDarkMode ? "#000" : "#fff",
                   },
                 }}
               >
