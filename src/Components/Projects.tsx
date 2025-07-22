@@ -20,10 +20,15 @@ const Projects = () => {
       : "1px solid #000";
 
   return (
-    <Stack className="topSpace innerWidth">
+    <Stack
+      className="topSpace innerWidth"
+      id="projects"
+      style={{ maxWidth: "1200px", margin: "auto"}}
+    >
       <Typography
         variant="h2"
         fontSize={{ xs: "1.7rem", sm: "2rem", lg: "2.5rem" }}
+         style={{ maxWidth: "1200px", margin: "auto"}}
       >
         Projects <span style={{ color: highlightColor }}>Highlight</span>
       </Typography>

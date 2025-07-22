@@ -124,10 +124,10 @@ const ServiceAbout = () => {
                 whiteSpace: "pre-wrap",
               }}
             >
-              <Typography component="div" sx={{ color: "#6a9955" }}>
+              <Typography component="div" variant="body2" sx={{ color: "#6a9955" }}>
                 // About me
               </Typography>
-              <Typography component="div" sx={{ mt: 1 }}>
+              <Typography component="div" variant="body2" sx={{ mt: 1 }}>
                 <span style={{ color: isDarkMode ? "#569cd6" : "#0000ff" }}>
                   const
                 </span>{" "}
@@ -143,7 +143,7 @@ const ServiceAbout = () => {
               </Typography>
 
               <Box sx={{ pl: 2, mt: 1 }}>
-                <Typography component="div">
+                <Typography component="div" variant="body2">
                   <span style={{ color: isDarkMode ? "#9cdcfe" : "#0070c1" }}>
                     name:
                   </span>{" "}
@@ -152,7 +152,7 @@ const ServiceAbout = () => {
                   </span>
                   ,
                 </Typography>
-                <Typography component="div">
+                <Typography component="div" variant="body2">
                   <span style={{ color: isDarkMode ? "#9cdcfe" : "#0070c1" }}>
                     role:
                   </span>{" "}
@@ -161,7 +161,7 @@ const ServiceAbout = () => {
                   </span>
                   ,
                 </Typography>
-                <Typography component="div">
+                <Typography component="div" variant="body2">
                   <span style={{ color: isDarkMode ? "#9cdcfe" : "#0070c1" }}>
                     location:
                   </span>{" "}
@@ -171,7 +171,7 @@ const ServiceAbout = () => {
                   ,
                 </Typography>
 
-                <Typography component="div" sx={{ mt: 2 }}>
+                <Typography component="div" variant="body2" sx={{ mt: 2 }}>
                   <span style={{ color: isDarkMode ? "#9cdcfe" : "#0070c1" }}>
                     skills:
                   </span>{" "}
@@ -180,7 +180,7 @@ const ServiceAbout = () => {
                   </span>
                 </Typography>
                 <Box sx={{ pl: 2 }}>
-                  <Typography component="div">
+                  <Typography component="div" variant="body2">
                     <span style={{ color: isDarkMode ? "#9cdcfe" : "#0070c1" }}>
                       frontend:
                     </span>{" "}
@@ -207,7 +207,7 @@ const ServiceAbout = () => {
                     </span>
                     ,
                   </Typography>
-                  <Typography component="div">
+                  <Typography component="div" variant="body2">
                     <span style={{ color: isDarkMode ? "#9cdcfe" : "#0070c1" }}>
                       backend:
                     </span>{" "}
@@ -234,7 +234,7 @@ const ServiceAbout = () => {
                     </span>
                     ,
                   </Typography>
-                  <Typography component="div">
+                  <Typography component="div" variant="body2">
                     <span style={{ color: isDarkMode ? "#9cdcfe" : "#0070c1" }}>
                       Mobile:
                     </span>{" "}
@@ -257,7 +257,7 @@ const ServiceAbout = () => {
                     </span>
                     ,
                   </Typography>
-                  <Typography component="div">
+                  <Typography component="div" variant="body2">
                     <span style={{ color: isDarkMode ? "#9cdcfe" : "#0070c1" }}>
                       Tools:
                     </span>{" "}
@@ -281,14 +281,14 @@ const ServiceAbout = () => {
                     ,
                   </Typography>
                 </Box>
-                <Typography component="div">
+                <Typography component="div" variant="body2">
                   <span style={{ color: isDarkMode ? "#d4d4d4" : "#2d2d30" }}>
                     {"}"}
                   </span>
                   ,
                 </Typography>
 
-                <Typography component="div" sx={{ mt: 2 }}>
+                <Typography component="div" variant="body2" sx={{ mt: 2 }}>
                   <span style={{ color: isDarkMode ? "#9cdcfe" : "#0070c1" }}>
                     passion:
                   </span>{" "}
@@ -298,7 +298,7 @@ const ServiceAbout = () => {
                   ,
                 </Typography>
 
-                <Typography component="div" sx={{ mt: 2 }}>
+                <Typography component="div" variant="body2" sx={{ mt: 2 }}>
                   <span style={{ color: isDarkMode ? "#9cdcfe" : "#0070c1" }}>
                     philosophy:
                   </span>{" "}
@@ -310,7 +310,7 @@ const ServiceAbout = () => {
                   </span>
                 </Typography>
                 <Box sx={{ pl: 2 }}>
-                  <Typography component="div">
+                  <Typography component="div" variant="body2">
                     <span style={{ color: isDarkMode ? "#569cd6" : "#0000ff" }}>
                       return
                     </span>{" "}
@@ -326,14 +326,14 @@ const ServiceAbout = () => {
                     ;
                   </Typography>
                 </Box>
-                <Typography component="div">
+                <Typography component="div" variant="body2">
                   <span style={{ color: isDarkMode ? "#d4d4d4" : "#2d2d30" }}>
                     {"}"}
                   </span>
                   ,
                 </Typography>
 
-                <Typography component="div" sx={{ mt: 2 }}>
+                <Typography component="div" variant="body2" sx={{ mt: 2 }}>
                   <span style={{ color: isDarkMode ? "#9cdcfe" : "#0070c1" }}>
                     currentlyLearning:
                   </span>{" "}
@@ -353,17 +353,17 @@ const ServiceAbout = () => {
                 </Typography>
               </Box>
 
-              <Typography component="div" sx={{ mt: 1 }}>
+              <Typography component="div" variant="body2" sx={{ mt: 1 }}>
                 <span style={{ color: isDarkMode ? "#d4d4d4" : "#2d2d30" }}>
                   {"}"}
                 </span>
                 ;
               </Typography>
 
-              <Typography component="div" sx={{ mt: 3, color: "#6a9955" }}>
+              <Typography component="div" variant="body2" sx={{ mt: 3, color: "#6a9955" }}>
                 // Let's build something amazing together!
               </Typography>
-              <Typography component="div" sx={{ mt: 1 }}>
+              <Typography component="div" variant="body2" sx={{ mt: 1 }}>
                 <span style={{ color: isDarkMode ? "#9cdcfe" : "#0070c1" }}>
                   console
                 </span>

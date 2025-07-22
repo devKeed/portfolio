@@ -252,8 +252,8 @@ h6 {
 }
 
 .float {
-  -webkit-animation: mover 1s infinite alternate;
-  animation: mover 1s infinite alternate;
+  -webkit-animation: mover 1.6s infinite alternate;
+  animation: mover 1.6s infinite alternate;
 }
 
 @-webkit-keyframes mover {

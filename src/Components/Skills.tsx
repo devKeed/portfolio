@@ -137,7 +137,7 @@ const Skills = () => {
               return (
                 <Grid
                   item
-                  xs={6}
+                  xs={4}
                   sm={4}
                   md={3}
                   lg={2}
@@ -186,6 +186,7 @@ const Skills = () => {
                     <Typography
                       fontSize={{ xs: 11, sm: 14, md: 16 }}
                       itemProp="name"
+                      textAlign="center"
                     >
                       {skill.name}
                     </Typography>

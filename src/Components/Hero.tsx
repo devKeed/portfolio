@@ -1,14 +1,64 @@
-import { Box, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Stack, Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MyButton from "./reusables/MyButton";
 import MainBar from "./MainBar";
 import { BackgroundMarquee } from "./BackgroundMarquee";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Hero = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [imageLoaded, setImageLoaded] = useState(false);
+  const verticalLineRef = useRef<HTMLDivElement>(null);
+  const shineRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (verticalLineRef.current && shineRef.current) {
+      // Animate the vertical line growing
+      gsap.fromTo(
+        verticalLineRef.current,
+        { height: 0 },
+        {
+          height: "100px",
+          duration: 1.5,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: verticalLineRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      // Animate the shine effect
+      gsap.fromTo(
+        shineRef.current,
+        { y: "-100%", opacity: 0 },
+        {
+          y: "100%",
+          opacity: 1,
+          duration: 2,
+          ease: "power2.inOut",
+          repeat: -1,
+          yoyo: true,
+          scrollTrigger: {
+            trigger: verticalLineRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none pause",
+          },
+        }
+      );
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -53,7 +103,7 @@ const Hero = () => {
         className="innerWidth"
         id="about"
         style={{
-          minHeight: "105vh",
+          minHeight: "135vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -110,7 +160,56 @@ const Hero = () => {
             </Box>
           </Stack>
 
-          {/* vertical line here */}
+          {/* Vertical line with shine effect */}
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              py: 2,
+            }}
+          >
+            <Box
+              ref={verticalLineRef}
+              sx={{
+                width: "2px",
+                height: "100px",
+                background: `linear-gradient(180deg, 
+                  transparent 0%, 
+                  ${theme.palette.mode === "dark" ? "#ffffff" : "#333333"} 20%, 
+                  ${theme.palette.mode === "dark" ? "#e0e0e0" : "#666666"} 80%, 
+                  transparent 100%)`,
+                position: "relative",
+                overflow: "hidden",
+                borderRadius: "1px",
+                boxShadow:
+                  theme.palette.mode === "dark"
+                    ? "0 0 10px rgba(255, 255, 255, 0.3)"
+                    : "0 0 10px rgba(0, 0, 0, 0.2)",
+              }}
+            >
+              {/* Shine effect */}
+              <Box
+                ref={shineRef}
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: "20px",
+                  background: `linear-gradient(180deg, 
+                    transparent 0%, 
+                    ${
+                      theme.palette.mode === "dark"
+                        ? "rgba(255, 255, 255, 0.8)"
+                        : "rgba(255, 255, 255, 0.9)"
+                    } 50%, 
+                    transparent 100%)`,
+                  filter: "blur(1px)",
+                }}
+              />
+            </Box>
+          </Box>
 
           <motion.div
             variants={imageVariants}
@@ -120,14 +219,16 @@ const Hero = () => {
               width: "100%",
             }}
           >
-            <img
-              height={200}
-              width={200}
+            <Box
+              component="img"
               className="float"
               src="./images/fortune_image.webp"
-              style={{
+              sx={{
                 opacity: imageLoaded ? 1 : 0.8,
                 transition: "opacity 0.3s ease",
+                width: "100%",
+                height: "auto",
+                maxWidth: { xs: "280px", sm: "330px", lg: "400px" },
               }}
               alt="Portrait of Fortune Adebiyi, Fullstack Software Engineer"
               loading="eager"
