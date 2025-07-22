@@ -108,7 +108,7 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="skills-section">
+    <section id="skills" className="skills-section" style={{maxWidth: "1200px", margin: "auto"}}>
       <Stack className="topSpace innerWidth">
         <Typography
           variant="h2"

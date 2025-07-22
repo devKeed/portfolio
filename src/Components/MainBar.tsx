@@ -177,7 +177,7 @@ const MainBar = () => {
         direction="row"
         className="innerWidth flexBetween"
         sx={{
-          padding: "10px 0",
+          padding: "10px 10px",
           position: "relative",
           zIndex: 10000,
         }}
@@ -187,7 +187,6 @@ const MainBar = () => {
           style={{ textDecoration: "none" }}
           aria-label="Fortune Adebiyi's homepage"
         >
-          {!isMobile ? (
             <Typography
               variant="body1"
               textAlign="center"
@@ -201,14 +200,7 @@ const MainBar = () => {
                 style={{ color: theme.palette.primary.main }}
               >{`<Adebiyi>`}</span>
             </Typography>
-          ) : (
-            <img
-              src="images\fortune_logo.webp"
-              height={30}
-              alt="Fortune Adebiyi - Portfolio Logo"
-              loading="eager"
-            />
-          )}
+          
         </Link>
         <Stack direction="row" alignItems="center" spacing={1}>
           <MaterialUISwitch

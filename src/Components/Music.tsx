@@ -63,27 +63,6 @@ export const Music = () => {
           />
         
         </Stack>
-         
-        <Stack
-          direction="row"
-          sx={{
-            textAlign: "center",
-            display: "flex",
-            justifyContent: "center",
-            marginTop: "10px",
-          }}
-          component={motion.div}
-          variants={textVariants}
-        >
-          <a href="https://drive.google.com/file/d/1rjxvWtLTANPiBJqUl27JyUQiaKrl65t2/view?usp=drive_link">
-            <Typography variant="h3">Checkout my CV</Typography>
-            <SummarizeIcon
-              sx={{ marginLeft: "5px" }}
-              component={motion.svg}
-              variants={iconVariants}
-            />
-          </a>
-        </Stack>
       </Stack>
     </Stack>
   );

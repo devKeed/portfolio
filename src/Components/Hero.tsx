@@ -53,7 +53,7 @@ const Hero = () => {
         className="innerWidth"
         id="about"
         style={{
-          minHeight: "85vh",
+          minHeight: "105vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -89,7 +89,7 @@ const Hero = () => {
             >
               Software Engineer
             </Typography>
-         
+
             <Typography
               variant="body1"
               textAlign="center"
@@ -103,33 +103,38 @@ const Hero = () => {
               scalable systems with aesthetics
             </Typography>
             <Box pt={2}>
-              <MyButton text="Download CV" />
+              <MyButton
+                text="Download CV"
+                link="https://docs.google.com/document/d/1G1YqBPGk9_DCQHc5rBF_dkiBu_fn15KGLiklEJ7hf_I/export?format=pdf"
+              />
             </Box>
           </Stack>
 
-             {/* <motion.div
-              variants={imageVariants}
+          {/* vertical line here */}
+
+          <motion.div
+            variants={imageVariants}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              width: "100%",
+            }}
+          >
+            <img
+              height={200}
+              width={200}
+              className="float"
+              src="./images/fortune_image.webp"
               style={{
-                display: "flex",
-                justifyContent: "center",
-                width: "100%",
+                opacity: imageLoaded ? 1 : 0.8,
+                transition: "opacity 0.3s ease",
               }}
-            >
-              <img
-                height={200}
-                width={200}
-                className="float"
-                src="./images/fortune_image.webp"
-                style={{
-                  opacity: imageLoaded ? 1 : 0.8,
-                  transition: "opacity 0.3s ease",
-                }}
-                alt="Portrait of Fortune Adebiyi, Fullstack Software Engineer"
-                loading="eager"
-                fetchPriority="high"
-                onLoad={() => setImageLoaded(true)}
-              />
-            </motion.div> */}
+              alt="Portrait of Fortune Adebiyi, Fullstack Software Engineer"
+              loading="eager"
+              fetchPriority="high"
+              onLoad={() => setImageLoaded(true)}
+            />
+          </motion.div>
         </Stack>
       </div>
     </div>

@@ -1,25 +1,33 @@
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
 import TerminalIcon from "@mui/icons-material/Terminal";
 import Groups2Icon from "@mui/icons-material/Groups2";
+import DrawIcon from "@mui/icons-material/Draw";
+
 
 export const serviceItems = [
   {
     title: "Design",
     description:
-      "I enjoy crafting user interfaces that not only look good but also improve functionality and user experience.",
+      "I create visually appealing and intuitive interfaces that enhance both usability and user engagement.",
     icon: <DesignServicesIcon sx={{ fontSize: 50 }} />,
   },
   {
     title: "Develop",
     description:
-      "I enjoy crafting user interfaces that not only look good but also improve functionality and user experience.",
+      "I build efficient, scalable, and responsive web applications using modern technologies and best practices.",
     icon: <TerminalIcon sx={{ fontSize: 50 }} />,
   },
   {
     title: "Collaborate",
     description:
-      "I enjoy crafting user interfaces that not only look good but also improve functionality and user experience.",
+      "I thrive in team environments, working closely with others to turn ideas into functional, impactful digital products.",
     icon: <Groups2Icon sx={{ fontSize: 50 }} />,
+  },
+  {
+    title: "Write",
+    description:
+      "I document processes, write technical articles, and create content that simplifies complex concepts for all audiences.",
+    icon: <DrawIcon sx={{ fontSize: 50 }} />,
   },
 ];
 
