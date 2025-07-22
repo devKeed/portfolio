@@ -59,21 +59,21 @@ export default function ToggleColorMode() {
             fontWeight: "8000",
             lineHeight: "1.2em",
             fontFamily: "PPValve-Medium, sans-serif;",
-              color: "#BABABA"
+    
           },
           h2: {
             fontSize: "2.6rem",
             fontWeight: "8000",
             lineHeight: "1.2em",
             fontFamily: "PPValve-Medium, sans-serif;",
-            color: "#BABABA"
+  
           },
           h3: {
             fontSize: "1.5rem",
             fontWeight: "8000",
             lineHeight: "1.2em",
             fontFamily: "PPValve-Medium, sans-serif;",
-              color: "#BABABA"
+    
           },
           h5: {
             fontFamily: "PPValve-Medium, sans-serif;",

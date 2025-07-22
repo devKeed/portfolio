@@ -85,7 +85,7 @@ const Hero = () => {
             color:
               theme.palette.mode === "dark"
                 ? "rgba(255, 255, 255, 0.02)"
-                : "rgba(0, 0, 0, 0.02)",
+                : "rgba(0, 0, 0, 0.03)",
             whiteSpace: "nowrap",
             fontFamily: "PPValve-Medium, sans-serif",
             animation: "marqueeScroll 560s linear infinite",
@@ -123,15 +123,15 @@ const Hero = () => {
           >
             <Typography
               variant="h1"
-              fontSize={{ xs: "2rem", sm: "2.5rem", lg: "5rem" }}
+              fontSize={{ xs: "2rem", sm: "2.5rem", lg: "6rem" }}
               textAlign="center"
               sx={{ color: theme.palette.text.primary }}
             >
-              Hi! I'm Fortune a
+              Fortune Adebiyi
             </Typography>
             <Typography
               variant="h1"
-              fontSize={{ xs: "2rem", sm: "2.5rem", lg: "5rem" }}
+              fontSize={{ xs: "2rem", sm: "2.5rem", lg: "6rem" }}
               textAlign="center"
               sx={{ color: theme.palette.text.primary }}
             >
