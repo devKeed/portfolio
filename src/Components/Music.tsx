@@ -1,6 +1,5 @@
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import { Spotify } from "react-spotify-embed";
-import SummarizeIcon from "@mui/icons-material/Summarize";
 import { motion } from "framer-motion";
 
 export const Music = () => {
@@ -28,15 +27,6 @@ export const Music = () => {
     },
   };
 
-  const iconVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.7, ease: "easeOut", delay: 0.5 },
-    },
-  };
-
   return (
     <Stack
       direction="row"
@@ -58,37 +48,10 @@ export const Music = () => {
           <Spotify
             wide
             width="100%"
-            height={160}
+            height={460}
             link="https://open.spotify.com/playlist/641VXxv32Yu44wKVVoDxZk?si=ae67597d17f84c25"
           />
-          <Stack>
-            <Typography variant="h3">I love music</Typography>
-            <Typography variant="body1" maxWidth={500}>
-              You can listen to this crafted playlist "Euphoria" while you get
-              to know me more, checkout my skills and some projects I've got my
-              hands on.
-            </Typography>
-          </Stack>
-        </Stack>
-        <Stack
-          direction="row"
-          sx={{
-            textAlign: "center",
-            display: "flex",
-            justifyContent: "center",
-            marginTop: "10px",
-          }}
-          component={motion.div}
-          variants={textVariants}
-        >
-          <a href="https://drive.google.com/file/d/1rjxvWtLTANPiBJqUl27JyUQiaKrl65t2/view?usp=drive_link">
-            <Typography variant="h3">Checkout my CV</Typography>
-            <SummarizeIcon
-              sx={{ marginLeft: "5px" }}
-              component={motion.svg}
-              variants={iconVariants}
-            />
-          </a>
+        
         </Stack>
       </Stack>
     </Stack>

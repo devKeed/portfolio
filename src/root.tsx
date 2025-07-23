@@ -1,5 +1,4 @@
 import HomePage from "./Components/HomePage";
-import MainBar from "./Components/MainBar";
 import SEO from "./Components/SEO";
 
 export default function Root() {
@@ -10,7 +9,6 @@ export default function Root() {
         description="Fortune Adebiyi's professional portfolio showcasing expertise in design, development, and creative projects."
         keywords="Fortune Adebiyi, web developer, designer, portfolio, projects, skills"
       />
-      <MainBar />
       <HomePage />
     </>
   );

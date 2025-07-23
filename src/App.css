@@ -27,6 +27,24 @@
   }
 }
 
+@keyframes marquee {
+  0% {
+    transform: translateX(100%) translateY(-50%);
+  }
+  100% {
+    transform: translateX(-100%) translateY(-50%);
+  }
+}
+
+@keyframes marqueeMove {
+  0% {
+    transform: translateX(0%) translateY(-50%);
+  }
+  100% {
+    transform: translateX(-200%) translateY(-50%);
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;

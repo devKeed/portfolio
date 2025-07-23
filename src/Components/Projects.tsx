@@ -5,19 +5,30 @@ import { projectItems } from "../data/MapItems";
 
 const Projects = () => {
   const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  
-  const highlightColor = theme.palette.mode === 'dark' ? "#8fff86" : "#8fff86";
-  const boxBackground = theme.palette.mode === 'dark' ? theme.palette.background.paper : "#fff";
-  const chipBackground = theme.palette.mode === 'dark' ? theme.palette.grey[800] : "#dddddd";
-  const chipBorder = theme.palette.mode === 'dark' ? `1px solid ${theme.palette.grey[700]}` : "1px solid #000";
-  
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  const highlightColor =
+    theme.palette.mode === "dark" ? "#64CF5CFF" : "#44AF3CFF";
+  const boxBackground =
+    theme.palette.mode === "dark" ? theme.palette.background.paper : "#fff";
+  const chipBackground =
+    theme.palette.mode === "dark" ? theme.palette.grey[800] : "#dddddd";
+  const chipBorder =
+    theme.palette.mode === "dark"
+      ? `1px solid ${theme.palette.grey[700]}`
+      : "1px solid #000";
+
   return (
-    <Stack className="topSpace innerWidth">
+    <Stack
+      className="topSpace innerWidth"
+      id="projects"
+      style={{ maxWidth: "1200px", margin: "auto"}}
+    >
       <Typography
         variant="h2"
         fontSize={{ xs: "1.7rem", sm: "2rem", lg: "2.5rem" }}
+         style={{ maxWidth: "1200px", margin: "auto"}}
       >
         Projects <span style={{ color: highlightColor }}>Highlight</span>
       </Typography>
@@ -25,8 +36,8 @@ const Projects = () => {
         Here are the skills I've acquired over the years, and I'm continuously
         expanding my knowledge in these areas.
       </Typography>
-      
-      {isDesktop && (
+
+      {isDesktop &&
         projectItems.map((project, id) => {
           return (
             <Stack key={id} mt={10} className="flexBetween">
@@ -81,12 +92,12 @@ const Projects = () => {
                     className="flexBetween"
                   >
                     <Stack spacing={1} direction="row" className="flexStart">
-                      <a href="" style={{ color: 'inherit' }}>
+                      <a href="" style={{ color: "inherit" }}>
                         <GitHubIcon className="pop-up" />{" "}
                       </a>
                     </Stack>
                     <Stack spacing={1} direction="row" className="flexStart">
-                      <a href="" style={{ color: 'inherit' }}>
+                      <a href="" style={{ color: "inherit" }}>
                         <LaunchIcon className="pop-up" />
                       </a>
                     </Stack>
@@ -104,10 +115,9 @@ const Projects = () => {
               </Stack>
             </Stack>
           );
-        })
-      )}
-      
-      {isMobile && (
+        })}
+
+      {isMobile &&
         projectItems.map((project, id) => {
           return (
             <Stack key={id} mt={5} className="flexBetween">
@@ -165,12 +175,12 @@ const Projects = () => {
                     className="flexBetween"
                   >
                     <Stack spacing={1} direction="row" className="flexStart">
-                      <a href="" style={{ color: 'inherit' }}>
+                      <a href="" style={{ color: "inherit" }}>
                         <GitHubIcon className="pop-up" />{" "}
                       </a>
                     </Stack>
                     <Stack spacing={1} direction="row" className="flexStart">
-                      <a href="" style={{ color: 'inherit' }}>
+                      <a href="" style={{ color: "inherit" }}>
                         <LaunchIcon className="pop-up" />
                       </a>
                     </Stack>
@@ -179,8 +189,7 @@ const Projects = () => {
               </Stack>
             </Stack>
           );
-        })
-      )}
+        })}
     </Stack>
   );
 };

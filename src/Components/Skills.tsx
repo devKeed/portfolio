@@ -1,4 +1,4 @@
-import Grid from '@mui/material/GridLegacy';
+import Grid from "@mui/material/GridLegacy";
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import { skillItems } from "../data/skillsData";
 import { useEffect, useRef } from "react";
@@ -108,14 +108,17 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="skills-section">
+    <section id="skills" className="skills-section" style={{maxWidth: "1200px", margin: "auto"}}>
       <Stack className="topSpace innerWidth">
         <Typography
           variant="h2"
           fontSize={{ xs: "1.7rem", sm: "2rem", lg: "2.5rem" }}
         >
-          <span itemProp="name">Fortune Adebiyi's </span>Ski
-          <span style={{ color: "#8fff86" }}>ll</span>s
+          Ski
+          <span style={{ color: isDarkMode ? "#64CF5CFF" : "#44AF3CFF" }}>
+            ll
+          </span>
+          s
         </Typography>
         <Typography variant="body1" itemProp="description">
           My primary stack includes React, MUI & Typescript. I have listed some
@@ -134,7 +137,7 @@ const Skills = () => {
               return (
                 <Grid
                   item
-                  xs={6}
+                  xs={4}
                   sm={4}
                   md={3}
                   lg={2}
@@ -183,6 +186,7 @@ const Skills = () => {
                     <Typography
                       fontSize={{ xs: 11, sm: 14, md: 16 }}
                       itemProp="name"
+                      textAlign="center"
                     >
                       {skill.name}
                     </Typography>

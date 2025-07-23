@@ -1,20 +1,21 @@
 import Hero from "./Hero";
-import { Music } from "./Music";
-import Service from "./Service";
 import Skills from "./Skills";
 import Contact from "./Contact";
 import Highlight from "./Highlights";
-import Designs from "./Designs";
+import ServiceAbout from "./ServiceAbout";
 
 function HomePage() {
   return (
     <>
       <Hero />
-      <Music />
-      <Service />
+     
+      {/* <Service /> */}
+ 
+      <ServiceAbout />
+
       <Skills />
       <Highlight />
-      <Designs/>
+      {/* <Designs/> */}
       <Contact />
     </>
   );

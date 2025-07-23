@@ -1,4 +1,4 @@
-import { Stack, Typography, IconButton } from "@mui/material";
+import { Stack, Typography, IconButton, useTheme } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useRef } from "react";
@@ -6,6 +6,8 @@ import { pages } from "../data/MapItems";
 
 const Designs = () => {
   const scrollRef: any = useRef(null);
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === "dark";
 
   const scrollLeft = () => {
     if (scrollRef.current) {
@@ -36,7 +38,10 @@ const Designs = () => {
             variant="h2"
             fontSize={{ xs: "1.7rem", sm: "2rem", lg: "2.5rem" }}
           >
-            My <span style={{ color: "#8fff86" }}>Designs</span>
+            My{" "}
+            <span style={{ color: isDarkMode ? "#64CF5CFF" : "#44AF3CFF" }}>
+              Designs
+            </span>
           </Typography>
           <Typography variant="body1">
             I also have experience in Graphics design and UI/UX design

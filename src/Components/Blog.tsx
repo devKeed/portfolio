@@ -18,6 +18,7 @@ import { motion } from "framer-motion";
 import { blogPosts, getBlogPostById } from "../data/blogData";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import MainBar from "./MainBar";
 
 // Component to display a single blog post
 const BlogPostDetail = () => {
@@ -91,6 +92,8 @@ const BlogPostDetail = () => {
   };
 
   return (
+    <>
+ 
     <Stack
       spacing={3}
       className="topSpace innerWidth"
@@ -218,13 +221,14 @@ const BlogPostDetail = () => {
       >
         {renderContent(post.content)}
       </Box>
-    </Stack>
+    </Stack></>
   );
 };
 
 // Component to display blog listing
 const BlogListing = () => {
   const theme = useTheme();
+  const isDarkMode = theme.palette.mode === "dark";
   const [searchTerm, setSearchTerm] = useState("");
 
   // Filter posts based on search term
@@ -262,9 +266,12 @@ const BlogListing = () => {
   };
 
   return (
+    <>
+       <MainBar/>
     <Stack spacing={3} className="topSpace innerWidth">
       <Typography variant="h2">
-        Blo<span style={{ color: "#8fff86" }}>g</span>
+        Blo
+        <span style={{ color: isDarkMode ? "#64CF5CFF" : "#44AF3CFF" }}>g</span>
       </Typography>
       <Typography variant="body1">
         Thoughts, stories and ideas on web development, design, and technology.
@@ -418,7 +425,7 @@ const BlogListing = () => {
           </Box>
         )}
       </Grid>
-    </Stack>
+    </Stack></>
   );
 };
 

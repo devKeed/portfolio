@@ -3,31 +3,29 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./HomePage";
 import Blog from "./Blog";
-import MainBar from "./MainBar";
 import { Footer } from "./Footer";
 import ContactPage from "./ContactPage";
 import ProjectPage from "./ProjectPage";
+import LoadingScreen from "./LoadingScreen";
 
-// Define the context type
 type ColorModeContextType = {
   toggleColorMode: () => void;
   mode: "light" | "dark";
 };
 
-// Export the context so it can be used in other components
-export const ColorModeContext = React.createContext<ColorModeContextType>({ 
+export const ColorModeContext = React.createContext<ColorModeContextType>({
   toggleColorMode: () => {},
-  mode: "light"
+  mode: "light",
 });
 
 export default function ToggleColorMode() {
   const [mode, setMode] = React.useState<"light" | "dark">("dark");
-  
-  // Apply theme to document element
+  const [isLoading, setIsLoading] = React.useState(true);
+
   React.useEffect(() => {
-    document.documentElement.setAttribute('data-theme', mode);
+    document.documentElement.setAttribute("data-theme", mode);
   }, [mode]);
-  
+
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
@@ -38,6 +36,10 @@ export default function ToggleColorMode() {
     [mode]
   );
 
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
   // Create a theme that combines dark/light mode with the custom theme settings
   const theme = React.useMemo(
     () =>
@@ -45,7 +47,7 @@ export default function ToggleColorMode() {
         palette: {
           mode,
           primary: {
-            main: "#8fff86",
+            main: mode === "dark" ? "#64CF5CFF" : "#44AF3CFF",
           },
           secondary: {
             main: "#784ef4",
@@ -62,22 +64,22 @@ export default function ToggleColorMode() {
             fontSize: "3.1rem",
             fontWeight: "8000",
             lineHeight: "1.2em",
-            fontFamily: "PPMori-Bold, sans-serif;",
+            fontFamily: "PPValve-Medium, sans-serif;",
           },
           h2: {
             fontSize: "2.6rem",
             fontWeight: "8000",
             lineHeight: "1.2em",
-            fontFamily: "PPMori-Bold, sans-serif;",
+            fontFamily: "PPValve-Medium, sans-serif;",
           },
           h3: {
             fontSize: "1.5rem",
             fontWeight: "8000",
             lineHeight: "1.2em",
-            fontFamily: "PPMori-Bold, sans-serif;",
+            fontFamily: "PPValve-Medium, sans-serif;",
           },
           h5: {
-            fontFamily: "PPMori-Bold, sans-serif;",
+            fontFamily: "PPValve-Medium, sans-serif;",
           },
           button: {
             textTransform: "none",
@@ -94,22 +96,27 @@ export default function ToggleColorMode() {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        <div style={{
-          margin: "auto",
-          overflow: "hidden",
-          color: theme.palette.text.primary,
-        }}>
-          <MainBar />
-          <div style={{ margin: "auto", maxWidth: "1100px" }}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/blog/*" element={<Blog />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/projects" element={<ProjectPage />} />
-            </Routes>
+        {isLoading ? (
+          <LoadingScreen onLoadingComplete={handleLoadingComplete} />
+        ) : (
+          <div
+            style={{
+              margin: "auto",
+              overflow: "hidden",
+              color: theme.palette.text.primary,
+            }}
+          >
+            <div style={{ margin: "auto" }}>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/blog/*" element={<Blog />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/projects" element={<ProjectPage />} />
+              </Routes>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
+        )}
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
