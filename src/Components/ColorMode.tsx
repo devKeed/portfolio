@@ -6,6 +6,7 @@ import Blog from "./Blog";
 import { Footer } from "./Footer";
 import ContactPage from "./ContactPage";
 import ProjectPage from "./ProjectPage";
+import LoadingScreen from "./LoadingScreen";
 
 type ColorModeContextType = {
   toggleColorMode: () => void;
@@ -19,6 +20,7 @@ export const ColorModeContext = React.createContext<ColorModeContextType>({
 
 export default function ToggleColorMode() {
   const [mode, setMode] = React.useState<"light" | "dark">("dark");
+  const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
     document.documentElement.setAttribute("data-theme", mode);
@@ -33,6 +35,10 @@ export default function ToggleColorMode() {
     }),
     [mode]
   );
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
 
   // Create a theme that combines dark/light mode with the custom theme settings
   const theme = React.useMemo(
@@ -90,23 +96,27 @@ export default function ToggleColorMode() {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        <div
-          style={{
-            margin: "auto",
-            overflow: "hidden",
-            color: theme.palette.text.primary,
-          }}
-        >
-          <div style={{ margin: "auto" }}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/blog/*" element={<Blog />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/projects" element={<ProjectPage />} />
-            </Routes>
+        {isLoading ? (
+          <LoadingScreen onLoadingComplete={handleLoadingComplete} />
+        ) : (
+          <div
+            style={{
+              margin: "auto",
+              overflow: "hidden",
+              color: theme.palette.text.primary,
+            }}
+          >
+            <div style={{ margin: "auto" }}>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/blog/*" element={<Blog />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/projects" element={<ProjectPage />} />
+              </Routes>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
+        )}
       </ThemeProvider>
     </ColorModeContext.Provider>
   );

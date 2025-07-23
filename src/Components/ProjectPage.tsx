@@ -21,7 +21,7 @@ import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import SEO from "./SEO";
 import MainBar from "./MainBar";
 import Contact from "./Contact";
-import { Footer } from "./Footer";
+
 
 // Define types for enhanced project items
 interface EnhancedProject {

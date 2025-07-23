@@ -70,48 +70,6 @@ const SocialList = styled("ul")(() => ({
   marginTop: "3rem",
 }));
 
-const SocialItem = styled("li")<{ bg: string }>(({ bg }) => ({
-  position: "relative",
-  flexBasis: "4.5rem",
-
-  "&::after": {
-    position: "absolute",
-    content: "attr(data-tooltip)",
-    top: "-45%",
-    left: "50%",
-    transform: "translateX(-50%)",
-    zIndex: 10,
-    padding: "0.5rem 1rem",
-    fontSize: "0.875rem",
-    color: "#fff",
-    background: bg,
-    borderRadius: "0.5rem",
-    opacity: 0,
-    visibility: "hidden",
-    pointerEvents: "none",
-    transition:
-      "top 0.4s cubic-bezier(0.47, 2, 0.41, 1.5), visibility 0.3s ease-in-out, opacity 0.2s ease-in-out",
-    whiteSpace: "nowrap",
-
-    "&::before": {
-      content: '""',
-      position: "absolute",
-      top: "100%",
-      left: "50%",
-      transform: "translateX(-50%)",
-      borderLeft: "6px solid transparent",
-      borderRight: "6px solid transparent",
-      borderTop: `6px solid ${bg}`,
-    },
-  },
-
-  "&:hover::after": {
-    opacity: 1,
-    visibility: "visible",
-    top: "-60%",
-  },
-}));
-
 const SocialLink = styled("a")<{ bg: string; isDark: boolean }>(
   ({ bg, isDark }) => ({
     position: "relative",

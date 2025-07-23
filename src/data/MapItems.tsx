@@ -51,12 +51,30 @@ export const projectItems = [
   },
   {
     button: "Checkout Nitoons",
-    name: "Nitoons",
+    name: "Nitoons Labs",
     description:
       "I developed Nitoons and it's products suite including scriptwriter, storyteller, using Next Js framework and Material UI",
     tech: ["Next.js", "Material UI", "framer motion"],
     image: "./images/nitoons_labs.png",
     link: "https://nitoons.com",
+  },
+    {
+    button: "",
+    name: "Detoplea Marketing",
+    description:
+      "",
+    tech: ["React", "Tailwind CSS", "Typescript"],
+    image: "./images/detoplea.png",
+    link: "https://detopleamarketing.com",
+  },
+     {
+    button: "",
+    name: "Vallery",
+    description:
+      "",
+    tech: ["React", "Tailwind CSS", "Typescript"],
+    image: "./images/vallery.png",
+    link: "/",
   },
   {
     button: "Checkout Scriptwriter",
@@ -67,6 +85,7 @@ export const projectItems = [
     image: "./images/h5.webp",
     link: "https://nitoons.com/dashboard",
   },
+ 
   {
     button: "Checkout Storyteller",
     name: "Storyteller",
@@ -75,6 +94,15 @@ export const projectItems = [
     tech: ["React.js", "Material UI", "framer motion"],
     image: "./images/h6.webp",
     link: "https://nitoons.com/dashboard",
+  },
+    {
+    button: "",
+    name: "African Warriors",
+    description:
+      "",
+    tech: ["React", "Tailwind CSS", "Typescript"],
+    image: "./images/awfc.png",
+    link: "https://www.africanwarriorsfc.com/",
   },
   {
     button: "visit-website",
@@ -92,6 +120,7 @@ export const projectItems = [
     image: "./images/h3.webp",
     link: "https://pledre.com",
   },
+ 
   {
     button: "Nitoons academy",
     name: "Nitoons academy",
@@ -103,12 +132,12 @@ export const projectItems = [
   },
   {
     button: "",
-    name: "Centafold Consults",
+    name: "Nitoons",
     description:
-      "Connected to Pledre API to create an interactive platform for students who would like to learn filmmaking and animation",
-    tech: ["Next.js", "Material UI", "Typescript", "Pledre API"],
+      "",
+    tech: ["React", "Material UI", "Typescript"],
     image: "./images/h1.webp",
-    link: "https://academy.nitoons.com",
+    link: "https://nitoons.com/home",
   },
 ];
 
