@@ -1,6 +1,5 @@
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import { Spotify } from "react-spotify-embed";
-import SummarizeIcon from "@mui/icons-material/Summarize";
 import { motion } from "framer-motion";
 
 export const Music = () => {
@@ -25,15 +24,6 @@ export const Music = () => {
       opacity: 1,
       x: 0,
       transition: { duration: 0.7, ease: "easeOut" },
-    },
-  };
-
-  const iconVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.7, ease: "easeOut", delay: 0.5 },
     },
   };
 
