@@ -8,16 +8,19 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { Key, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projectItems } from "../data/MapItems";
 import MyButton from "./reusables/MyButton";
+import { BackgroundMarquee } from "./BackgroundMarquee";
 
 // Register GSAP ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const Highlight = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -36,168 +39,6 @@ const Highlight = () => {
     theme.palette.mode === "dark" ? theme.palette.background.paper : "#fff";
 
   useEffect(() => {
-    if (!isMobile) {
-      // Clear any existing ScrollTriggers
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-
-      projectItems.forEach((_, index) => {
-        const project = projectRefs.current[index];
-        const image = imageRefs.current[index];
-        const text = textRefs.current[index];
-
-        if (project && image && text) {
-          // Create strong parallax effect for image and text moving in opposite directions
-          // Image moves down as you scroll (slower than scroll)
-          gsap.fromTo(
-            image,
-            { y: -200 },
-            {
-              y: 200,
-              ease: "none",
-              scrollTrigger: {
-                trigger: project,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 2, // Slower, more dramatic effect
-              },
-            }
-          );
-
-          // Text moves up as you scroll (opposite direction to image)
-          gsap.fromTo(
-            text,
-            { y: 150 },
-            {
-              y: -150,
-              ease: "none",
-              scrollTrigger: {
-                trigger: project,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1.5, // Slightly faster than image for contrast
-              },
-            }
-          );
-
-          // Scale and rotation effect on image for added depth
-          gsap.fromTo(
-            image.querySelector("img"),
-            { scale: 1.2, rotation: 2 },
-            {
-              scale: 0.9,
-              rotation: -2,
-              ease: "none",
-              scrollTrigger: {
-                trigger: project,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1,
-              },
-            }
-          );
-
-          // Additional fade effect based on scroll position
-          gsap.fromTo(
-            image,
-            { opacity: 0.7 },
-            {
-              opacity: 1,
-              ease: "none",
-              scrollTrigger: {
-                trigger: project,
-                start: "top center",
-                end: "center center",
-                scrub: 1,
-              },
-            }
-          );
-
-          gsap.fromTo(
-            text,
-            { opacity: 0.8 },
-            {
-              opacity: 1,
-              ease: "none",
-              scrollTrigger: {
-                trigger: project,
-                start: "top center",
-                end: "center center",
-                scrub: 1,
-              },
-            }
-          );
-
-          // Add horizontal parallax for alternating sides
-          if (index % 2 === 1) {
-            // For right-side projects, add subtle horizontal movement
-            gsap.fromTo(
-              image,
-              { x: 50 },
-              {
-                x: -50,
-                ease: "none",
-                scrollTrigger: {
-                  trigger: project,
-                  start: "top bottom",
-                  end: "bottom top",
-                  scrub: 1,
-                },
-              }
-            );
-
-            gsap.fromTo(
-              text,
-              { x: -30 },
-              {
-                x: 30,
-                ease: "none",
-                scrollTrigger: {
-                  trigger: project,
-                  start: "top bottom",
-                  end: "bottom top",
-                  scrub: 1.5,
-                },
-              }
-            );
-          } else {
-            // For left-side projects, opposite horizontal movement
-            gsap.fromTo(
-              image,
-              { x: -50 },
-              {
-                x: 50,
-                ease: "none",
-                scrollTrigger: {
-                  trigger: project,
-                  start: "top bottom",
-                  end: "bottom top",
-                  scrub: 1,
-                },
-              }
-            );
-
-            gsap.fromTo(
-              text,
-              { x: 30 },
-              {
-                x: -30,
-                ease: "none",
-                scrollTrigger: {
-                  trigger: project,
-                  start: "top bottom",
-                  end: "bottom top",
-                  scrub: 1.5,
-                },
-              }
-            );
-          }
-        }
-      });
-
-      // Refresh ScrollTrigger after all animations are set
-      ScrollTrigger.refresh();
-    }
-
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
@@ -216,8 +57,6 @@ const Highlight = () => {
         justifyContent: "center",
         position: "relative",
         overflow: "hidden",
-        background: `linear-gradient(135deg, ${theme.palette.background.default}00, ${theme.palette.background.paper}40)`,
-        // Add perspective for 3D effects
         perspective: "1000px",
         transformStyle: "preserve-3d",
       }}
@@ -234,6 +73,7 @@ const Highlight = () => {
           flexDirection: index % 2 === 1 ? "row-reverse" : "row",
         }}
       >
+        <BackgroundMarquee text={item.name} />
         {/* Text Section */}
         <Box
           ref={(el: HTMLDivElement | null) => {
@@ -256,27 +96,22 @@ const Highlight = () => {
             viewport={{ once: true }}
           >
             <Typography
-              variant="h2"
+              variant="h3"
               sx={{
-                fontSize: { xs: "2rem", md: "3rem", lg: "4rem" },
+                fontSize: { xs: "1.5rem", md: "2rem", lg: "3rem" },
                 fontWeight: "bold",
                 marginBottom: 2,
-                background: `linear-gradient(45deg, ${highlightColor}, ${theme.palette.primary.main})`,
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
               }}
             >
               {item.name}
             </Typography>
 
             <Typography
-              variant="h6"
+              variant="body2"
               sx={{
                 marginBottom: 3,
                 opacity: 0.9,
                 lineHeight: 1.6,
-                fontSize: { xs: "1rem", md: "1.2rem" },
               }}
             >
               {item.description}
@@ -295,11 +130,10 @@ const Highlight = () => {
                 <Typography
                   key={id}
                   sx={{
-                    padding: "8px 16px",
-                    fontSize: { xs: "0.8rem", md: "0.9rem" },
+                    padding: "5px 10px",
+                    fontSize: { xs: "0.6rem", md: "0.7rem" },
                     background: chipBackground,
                     border: chipBorder,
-                    borderRadius: "20px",
                     transition: "transform 0.2s ease",
                     "&:hover": {
                       transform: "translateY(-2px)",
@@ -320,7 +154,6 @@ const Highlight = () => {
               }}
             >
               <MyButton link={item.link} text={item.button} />
-           
             </motion.div>
           </motion.div>
         </Box>
@@ -332,26 +165,9 @@ const Highlight = () => {
           }}
           sx={{
             flex: 1,
-            maxWidth: "600px",
             height: "70vh",
             position: "relative",
-            overflow: "hidden",
-            borderRadius: "20px",
-            boxShadow: `0 20px 40px rgba(0,0,0,0.3)`,
-            // Add initial transform for parallax
-            transform: "translateZ(0px)",
             willChange: "transform",
-            "&::before": {
-              content: '""',
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: `linear-gradient(45deg, ${highlightColor}20, transparent)`,
-              zIndex: 1,
-              borderRadius: "20px",
-            },
           }}
         >
           <img
@@ -361,7 +177,6 @@ const Highlight = () => {
               width: "100%",
               height: "100%",
               objectFit: "cover",
-              borderRadius: "20px",
             }}
           />
         </Box>
@@ -372,6 +187,7 @@ const Highlight = () => {
   return (
     <Box sx={{ width: "100%" }}>
       {/* Header Section */}
+
       <Stack
         className="topSpace innerWidth"
         id="projects"
@@ -394,7 +210,7 @@ const Highlight = () => {
       {/* Desktop Full-Screen Projects */}
       {!isMobile && (
         <Box>
-          {projectItems.map((item, index) => (
+          {projectItems.slice(0, 3).map((item, index) => (
             <FullScreenProject key={index} item={item} index={index} />
           ))}
         </Box>
@@ -403,16 +219,17 @@ const Highlight = () => {
       {/* Mobile Projects */}
       {isMobile && (
         <Stack spacing={4} sx={{ padding: 2 }}>
-          {projectItems.map((project, id) => (
+          {projectItems.slice(0, 3).map((project, id) => (
             <Stack key={id} spacing={2}>
               <Box
                 sx={{
                   background: projectBoxBackground,
-                  borderRadius: "15px",
                   overflow: "hidden",
                   boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+                  position: "relative",
                 }}
               >
+               
                 <Box sx={{ height: "250px", overflow: "hidden" }}>
                   <img
                     src={project.image}
@@ -425,8 +242,10 @@ const Highlight = () => {
                     }}
                   />
                 </Box>
+                  
 
-                <Box sx={{ padding: 3 }}>
+                <Box sx={{ padding: 3, position: "relative" }}>
+                     <BackgroundMarquee text={project.name} />
                   <Typography
                     variant="h5"
                     fontWeight="bold"
@@ -455,11 +274,10 @@ const Highlight = () => {
                         <Typography
                           key={id}
                           sx={{
-                            padding: "4px 12px",
+                            padding: "3px 8px",
                             fontSize: "0.8rem",
                             background: chipBackground,
                             border: chipBorder,
-                            borderRadius: "15px",
                           }}
                         >
                           {tool}
@@ -468,24 +286,65 @@ const Highlight = () => {
                     )}
                   </Stack>
 
-                  <Button
-                    variant="contained"
-                    href={project.link}
-                    fullWidth
-                    sx={{
-                      padding: "12px",
-                      borderRadius: "10px",
-                      background: `linear-gradient(45deg, ${highlightColor}, ${theme.palette.primary.main})`,
-                    }}
-                  >
-                    {project.button} 
-                  </Button>
+                 <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{
+                type: "spring",
+                stiffness: 400,
+                damping: 20,
+              }}
+            >
+              <MyButton link={project.link} text={project.button} />
+            </motion.div>
                 </Box>
               </Box>
             </Stack>
           ))}
         </Stack>
       )}
+
+      {/* View More Projects Button */}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: { xs: 4, md: 8 },
+          marginBottom: { xs: 2, md: 4 },
+        }}
+      >
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{
+            type: "spring",
+            stiffness: 400,
+            damping: 20,
+          }}
+        >
+          <Button
+            variant="outlined"
+            size="large"
+            onClick={() => navigate("/projects")}
+            sx={{
+              padding: { xs: "12px 24px", md: "16px 32px" },
+              fontSize: { xs: "1rem", md: "1.1rem" },
+              fontWeight: "600",
+              borderColor: highlightColor,
+              color: highlightColor,
+              textTransform: "none",
+              transition: "all 0.3s ease",
+              "&:hover": {
+                borderColor: highlightColor,
+                backgroundColor: `${highlightColor}20`,
+                transform: "translateY(-2px)",
+                boxShadow: `0 8px 25px ${highlightColor}40`,
+              },
+            }}
+          >
+            View More Projects
+          </Button>
+        </motion.div>
+      </Box>
     </Box>
   );
 };

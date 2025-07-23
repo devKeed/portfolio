@@ -1,6 +1,6 @@
 import { useMediaQuery, useTheme } from "@mui/material";
 
-export const BackgroundMarquee = () => {
+export const BackgroundMarquee = ({text}: {text: string}) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -39,7 +39,7 @@ export const BackgroundMarquee = () => {
             top: "50%",
             left: "50%",
             transform: "translateX(-50%) translateY(-50%)",
-            fontSize: isMobile ? "6rem" : "35rem",
+            fontSize: isMobile ? "15rem" : "35rem",
             fontWeight: 900,
             color:
               theme.palette.mode === "dark"
@@ -47,11 +47,10 @@ export const BackgroundMarquee = () => {
                 : "rgba(0, 0, 0, 0.03)",
             whiteSpace: "nowrap",
             fontFamily: "PPValve-Medium, sans-serif",
-            animation: "marqueeScroll 560s linear infinite",
+            animation: "marqueeScroll 360s linear infinite",
           }}
         >
-          Fortune Adebiyi Fortune Adebiyi Fortune Adebiyi Fortune Adebiyi
-          Fortune Adebiyi
+          {text}
         </div>
       </div>
     </>

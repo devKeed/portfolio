@@ -33,21 +33,29 @@ export const serviceItems = [
 
 export const projectItems = [
   {
-    button: "Coming soon",
-    name: "Actors App",
+    button: "Check Paystro App",
+    name: "Paystro",
+    description:"Delivered core features for a cross-border payment platform, including bill payments and peer-to-peer transfers using Flutter and React.",
+    tech: ["Flutter", "React", "Postgresql", "Typescript", "Node.js", "Express.js"],
+    image: "./images/paystro.png",
+    link: "#",
+  },
+  {
+    button: "Check OneTake App",
+    name: "OneTake",
     description:
-      "I was the Team lead and backend developer for the Actor's app, a social network application niche for Actors and producers. I supported the Flutter application, using Node.js, Express.js, and MongoDB to develop and maintain backend APIs, handling business logic, and ensuring system reliability.",
-    tech: ["Mongo DB", "Express Js", "Node Js", "Typescript"],
-    image: "./images/h2.webp",
+      "I was the Team lead and backend developer for the project, Developed the flutter application, built the backend using Node.js, Express.js, and MongoDB to develop and maintain backend APIs, handling business logic",
+    tech: ["Flutter", "Mongo DB", "Express Js", "Node Js", "Typescript", "MUI"],
+    image: "./images/onetake.png",
     link: "#",
   },
   {
     button: "Checkout Nitoons",
     name: "Nitoons",
     description:
-      "I developed the landing page for Nitoons and it's products suite, using Next Js framework and Material UI",
+      "I developed Nitoons and it's products suite including scriptwriter, storyteller, using Next Js framework and Material UI",
     tech: ["Next.js", "Material UI", "framer motion"],
-    image: "./images/h1.webp",
+    image: "./images/nitoons_labs.png",
     link: "https://nitoons.com",
   },
   {
@@ -55,7 +63,7 @@ export const projectItems = [
     name: "Scriptwriter",
     description:
       "Using React for the frontend, Node js Typescript and Mongodb for the backend, I developed the collaborative text editor feature of the scriptwriter application ",
-    tech: ["React.js", "Material UI", "framer motion"],
+    tech: ["React Native", "Material UI", "framer motion"],
     image: "./images/h5.webp",
     link: "https://nitoons.com/dashboard",
   },
@@ -93,15 +101,15 @@ export const projectItems = [
     image: "./images/h4.webp",
     link: "https://academy.nitoons.com",
   },
-  // {
-  //   button: "",
-  //   name: "Centafold Consults",
-  //   description:
-  //     "Connected to Pledre API to create an interactive platform for students who would like to learn filmmaking and animation",
-  //   tech: ["Next.js", "Material UI", "Typescript", "Pledre API"],
-  //   image: "./images/h1.webp",
-  //   link: "https://academy.nitoons.com",
-  // },
+  {
+    button: "",
+    name: "Centafold Consults",
+    description:
+      "Connected to Pledre API to create an interactive platform for students who would like to learn filmmaking and animation",
+    tech: ["Next.js", "Material UI", "Typescript", "Pledre API"],
+    image: "./images/h1.webp",
+    link: "https://academy.nitoons.com",
+  },
 ];
 
 export const graphics = [

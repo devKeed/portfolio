@@ -191,8 +191,9 @@ const MainBar = () => {
               variant="body1"
               fontFamily="PPValve-Medium"
               textAlign="center"
-              style={{ maxWidth: 700, fontSize: "1.5rem" }}
-              mt={2}
+              fontSize={{ xs: "1.2rem", sm: "1.5rem" }}
+              style={{ maxWidth: 700 }}
+              mt={{xs: 0, sm: 2}}
               component={motion.p}
               sx={{ color: theme.palette.text.secondary }}
             >

@@ -87,7 +87,10 @@ const Hero = () => {
     <div
       style={{ minHeight: "100vh", position: "relative", overflow: "hidden" }}
     >
-      <BackgroundMarquee />
+      <BackgroundMarquee
+        text="Fortune Adebiyi Fortune Adebiyi Fortune Adebiyi Fortune Adebiyi
+          Fortune Adebiyi"
+      />
 
       <MainBar />
       <div

@@ -22,6 +22,7 @@ import SendIcon from "@mui/icons-material/Send";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { useState } from "react";
 import SEO from "./SEO";
+import MainBar from "./MainBar";
 
 const contactItems = [
   {
@@ -191,6 +192,7 @@ const ContactPage = () => {
 
   return (
     <>
+    <MainBar/>
       <SEO
         title="Contact Fortune Adebiyi | Get in Touch"
         description="Get in touch with Fortune Adebiyi. Send a message or connect through social media to discuss projects, collaborations, or inquiries."

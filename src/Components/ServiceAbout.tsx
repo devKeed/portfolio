@@ -148,7 +148,7 @@ const ServiceAbout = () => {
                     name:
                   </span>{" "}
                   <span style={{ color: isDarkMode ? "#ce9178" : "#a31515" }}>
-                    "Fortune"
+                    "Fortune Adebiyi"
                   </span>
                   ,
                 </Typography>
@@ -157,7 +157,7 @@ const ServiceAbout = () => {
                     role:
                   </span>{" "}
                   <span style={{ color: isDarkMode ? "#ce9178" : "#a31515" }}>
-                    "Full Stack Developer"
+                    "FullStack Software Engineer"
                   </span>
                   ,
                 </Typography>
@@ -166,7 +166,7 @@ const ServiceAbout = () => {
                     location:
                   </span>{" "}
                   <span style={{ color: isDarkMode ? "#ce9178" : "#a31515" }}>
-                    "Nigeria"
+                    "Nigeria 🇳🇬"
                   </span>
                   ,
                 </Typography>
@@ -270,6 +270,14 @@ const ServiceAbout = () => {
                     ,{" "}
                     <span style={{ color: isDarkMode ? "#ce9178" : "#a31515" }}>
                       "Figma"
+                    </span>
+                    ,{" "}
+                    <span style={{ color: isDarkMode ? "#ce9178" : "#a31515" }}>
+                      "Webflow"
+                    </span>
+                     ,{" "}
+                    <span style={{ color: isDarkMode ? "#ce9178" : "#a31515" }}>
+                      "Linux"
                     </span>
                     ,{" "}
                     <span style={{ color: isDarkMode ? "#ce9178" : "#a31515" }}>

@@ -18,6 +18,7 @@ import { motion } from "framer-motion";
 import { blogPosts, getBlogPostById } from "../data/blogData";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import MainBar from "./MainBar";
 
 // Component to display a single blog post
 const BlogPostDetail = () => {
@@ -91,6 +92,8 @@ const BlogPostDetail = () => {
   };
 
   return (
+    <>
+ 
     <Stack
       spacing={3}
       className="topSpace innerWidth"
@@ -218,7 +221,7 @@ const BlogPostDetail = () => {
       >
         {renderContent(post.content)}
       </Box>
-    </Stack>
+    </Stack></>
   );
 };
 
@@ -263,6 +266,8 @@ const BlogListing = () => {
   };
 
   return (
+    <>
+       <MainBar/>
     <Stack spacing={3} className="topSpace innerWidth">
       <Typography variant="h2">
         Blo
@@ -420,7 +425,7 @@ const BlogListing = () => {
           </Box>
         )}
       </Grid>
-    </Stack>
+    </Stack></>
   );
 };
 

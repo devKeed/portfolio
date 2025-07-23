@@ -19,6 +19,9 @@ import LinkIcon from "@mui/icons-material/Link";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import SEO from "./SEO";
+import MainBar from "./MainBar";
+import Contact from "./Contact";
+import { Footer } from "./Footer";
 
 // Define types for enhanced project items
 interface EnhancedProject {
@@ -123,8 +126,9 @@ const ProjectPage = () => {
         description="Explore Fortune Adebiyi's projects showcasing expertise in full-stack development, frontend, backend, and design skills."
         keywords="Fortune Adebiyi, projects, portfolio, web development, React, Node.js, fullstack"
       />
-
+     <MainBar/>
       <section className="projects-section topSpace innerWidth">
+   
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -511,6 +515,7 @@ const ProjectPage = () => {
           </Box>
         </motion.div>
       </section>
+      <Contact/>
     </>
   );
 };
