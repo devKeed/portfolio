@@ -1,93 +1,42 @@
-import { Typography, useTheme } from "@mui/material";
-import { useState } from "react";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import { Link } from "react-router-dom";
 
-const MyButton = ({ text, link }: { text: string; link: string }) => {
-  const theme = useTheme();
-  const [isHovered, setIsHovered] = useState(false);
+const isExternal = (link: string) =>
+  link.startsWith("http") || link.startsWith("mailto:") || link.startsWith("tel:");
 
-  const buttonStyle = {
-    position: "relative" as const,
-    overflow: "hidden" as const,
-    border: `1px solid ${theme.palette.mode === "dark" ? "#fff" : "#18181a"}`,
-    color: theme.palette.mode === "dark" ? "#fff" : "#18181a",
-    display: "inline-block" as const,
-    fontSize: "15px",
-    lineHeight: "15px",
-    padding: "18px 18px 17px",
-    textDecoration: "none" as const,
-    cursor: "pointer" as const,
-    background: theme.palette.mode === "dark" ? "#000" : "#fff",
-    userSelect: "none" as const,
-    WebkitUserSelect: "none" as const,
-    touchAction: "manipulation" as const,
-  };
+const isAnchor = (link: string) => link.startsWith("#");
 
-  const firstSpanStyle = {
-    position: "relative" as const,
-    transition: "color 600ms cubic-bezier(0.48, 0, 0.12, 1)",
-    zIndex: 10,
-    color: isHovered
-      ? theme.palette.mode === "dark"
-        ? "#000"
-        : "#fff"
-      : theme.palette.mode === "dark"
-      ? "#fff"
-      : "#18181a",
-  };
+type MyButtonProps = {
+  text: string;
+  link: string;
+  subdued?: boolean;
+};
 
-  const secondSpanStyle = {
-    color: theme.palette.mode === "dark" ? "#000" : "#fff",
-    display: "block" as const,
-    position: "absolute" as const,
-    bottom: 0,
-    transition: "all 900ms cubic-bezier(0.48, 0, 0.12, 1)",
-    zIndex: 100,
-    opacity: isHovered ? 1 : 0,
-    top: "50%",
-    left: "50%",
-    transform: isHovered
-      ? "translateX(-50%) translateY(-100%)"
-      : "translateY(225%) translateX(-50%)",
-    height: "14px",
-    lineHeight: "13px",
-  };
+const content = (text: string, subdued?: boolean) => (
+  <span className={`button-link${subdued ? " button-link--subdued" : ""}`}>
+    <span>{text}</span>
+    <ArrowOutwardIcon sx={{ fontSize: 18 }} />
+  </span>
+);
 
-  const afterElementStyle = {
-    content: '""',
-    position: "absolute" as const,
-    bottom: "-50%",
-    left: 0,
-    width: "100%",
-    height: "100%",
-    backgroundColor: theme.palette.mode === "dark" ? "#fff" : "#000",
-    transformOrigin: "bottom center",
-    transition: "transform 600ms cubic-bezier(0.48, 0, 0.12, 1)",
-    transform: isHovered
-      ? "skewY(9.3deg) scaleY(2)"
-      : "skewY(9.3deg) scaleY(0)",
-    zIndex: 50,
-  };
+const MyButton = ({ text, link, subdued = false }: MyButtonProps) => {
+  if (isExternal(link) || isAnchor(link)) {
+    return (
+      <a
+        href={link}
+        className="button-link-anchor"
+        target={isExternal(link) && !link.startsWith("mailto:") && !link.startsWith("tel:") ? "_blank" : undefined}
+        rel={isExternal(link) && !link.startsWith("mailto:") && !link.startsWith("tel:") ? "noreferrer" : undefined}
+      >
+        {content(text, subdued)}
+      </a>
+    );
+  }
 
   return (
-    <a href={link}>
-      {" "}
-      <button
-        style={buttonStyle}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        role="button"
-      >
-     <div style={{display:"flex"}}>   <div><Typography fontFamily="PPValve-Stencil">
-          <span style={firstSpanStyle}>{text}</span>
-        </Typography>
-         <Typography fontFamily="PPValve-Stencil">
-          <span style={secondSpanStyle}>{text}</span>
-        </Typography>
-        <div style={afterElementStyle} /></div>
-        <ArrowOutwardIcon sx={{ marginLeft: 1 }} /></div>
-      </button>
-    </a>
+    <Link to={link} className="button-link-anchor">
+      {content(text, subdued)}
+    </Link>
   );
 };
 

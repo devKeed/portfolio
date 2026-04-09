@@ -153,7 +153,16 @@ const Service = () => {
                   },
                 }}
               >
-                {service.icon}
+                <Typography
+                  variant="body2"
+                  sx={{
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    color: isDarkMode ? "#64CF5CFF" : "#44AF3CFF",
+                  }}
+                >
+                  {service.caption}
+                </Typography>
                 <Typography variant="h3" fontSize="1.2rem">
                   {service.title}
                 </Typography>

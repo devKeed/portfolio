@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { pages } from "../data/MapItems";
 
 const Designs = () => {
-  const scrollRef: any = useRef(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
   const theme = useTheme();
   const isDarkMode = theme.palette.mode === "dark";
 

@@ -8,14 +8,9 @@ function HomePage() {
   return (
     <>
       <Hero />
-     
-      {/* <Service /> */}
- 
       <ServiceAbout />
-
       <Skills />
       <Highlight />
-      {/* <Designs/> */}
       <Contact />
     </>
   );
